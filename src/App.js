@@ -6,9 +6,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <button className="btn btn-primary">
           yala esht8lo ya 3lo2 xD
-        </p>
+        </button>
       </header>
     </div>
   );
