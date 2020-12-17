@@ -1,6 +1,7 @@
 import './App.css';
 import AdminView from './components/AdminView';
 import Navbar from './components/Navbar'
+import Home from './components/Home'
 import {
   BrowserRouter as Router, 
   Switch,
@@ -12,21 +13,26 @@ import {
 function App() {
   return (
     <div className="App">
-      <header className="App-header d-flex align-items-center min-vh-100">
-       
-        <div className="container text-center">
-        
+
+      <div>
         <Navbar />
-        <Router>
-          <Switch>
-              <Route path="/AdminView">
-                  <AdminView/>
-              </Route>
-          </Switch>
-        </Router>  
-          
+       </div>
+
+      <section className="App-header d-flex align-items-center min-vh-100">
+        <div className="container text-center">
+          <Router>
+            <Switch>
+                <Route path="/">
+                    <Home/>
+                </Route>
+                <Route path="/AdminView">
+                    <AdminView/>
+                </Route>
+
+            </Switch>
+          </Router>     
         </div>
-      </header>
+      </section>
     </div>
   );
 }
