@@ -1,5 +1,6 @@
 import './App.css';
 import AdminView from './components/AdminView';
+import LoginView from './components/LoginView'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import {
@@ -27,6 +28,9 @@ function App() {
                 </Route>
                 <Route path="/admin">
                     <AdminView/>
+                </Route>
+                <Route path="/login">
+                    <LoginView/>
                 </Route>
             </Switch>     
         </div>
