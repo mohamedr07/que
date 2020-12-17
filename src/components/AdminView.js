@@ -4,6 +4,7 @@ import processImage from '../resources/process.png'
 import providerImage from '../resources/provider.png'
 import queueImage from '../resources/queue.png'
 import stationImage from '../resources/station.jpg'
+import { Link } from 'react-router-dom';
 
 export class AdminView extends Component {
     render() {
@@ -16,7 +17,7 @@ export class AdminView extends Component {
                         <div class="card-body">
                             <h5 class="card-title">Processes</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <Link to="/processes"class="btn btn-primary">View processes</Link>
                         </div>
                     </div>   
                 </div>
