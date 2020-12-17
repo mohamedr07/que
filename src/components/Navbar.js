@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import AdminView from './AdminView'
 import {
     BrowserRouter as Router, 
     Switch,
@@ -22,21 +23,12 @@ export class Navbar extends Component {
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <Link to="/AdminView">Admin View</Link>
+                            <Link to="/AdminView">Admin</Link>
                         </li>
                         </ul>
                     </div>
-                        <Switch>
-                            <Route path="/AdminView">
-                                <AdminView/>
-                            </Route>
-                        </Switch>
                     </Router>
                 </nav>
-
-                    <Link to="/AdminView">Admin View</Link>
-    
-
             </div>
 
                 
