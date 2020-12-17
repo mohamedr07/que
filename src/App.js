@@ -1,6 +1,7 @@
 import './App.css';
 import AdminView from './components/AdminView';
 import LoginView from './components/LoginView'
+import RegisterView from './components/RegisterView'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import {
@@ -31,6 +32,9 @@ function App() {
                 </Route>
                 <Route path="/login">
                     <LoginView/>
+                </Route>
+                <Route path="/register">
+                    <RegisterView/>
                 </Route>
             </Switch>     
         </div>
