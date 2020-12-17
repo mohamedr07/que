@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import processImage from '../resources/process.png'
-import providerImage from '../resources/provider.png'
-import queueImage from '../resources/queue.png'
+import processImage from '../resources/process.jpg'
+import providerImage from '../resources/provider.jpg'
+import queueImage from '../resources/queue.jpg'
 import stationImage from '../resources/station.jpg'
 import { Link } from 'react-router-dom';
 

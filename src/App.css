@@ -13,3 +13,17 @@ a {
   color: #dac4c4;
   text-decoration: none;
 }
+
+.navbar-grey { 
+	background-color: #262728; 
+} 
+
+.navbar-grey .navbar-text , 
+.navbar-grey .navbar-brand {
+  color:slategray;
+}
+
+.btn-primary {
+  background-color: #262728 !important; 
+  border: none !important;
+}
