@@ -13,26 +13,25 @@ import {
 function App() {
   return (
     <div className="App">
-
-      <div>
-        <Navbar />
-       </div>
+        
+      
+      <Router>
+      
+      <Navbar />
 
       <section className="App-header d-flex align-items-center min-vh-100">
         <div className="container text-center">
-          <Router>
             <Switch>
-                <Route path="/">
+                <Route path="/home">
                     <Home/>
                 </Route>
-                <Route path="/AdminView">
+                <Route path="/admin">
                     <AdminView/>
                 </Route>
-
-            </Switch>
-          </Router>     
+            </Switch>     
         </div>
       </section>
+      </Router>
     </div>
   );
 }
