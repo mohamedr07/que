@@ -10,6 +10,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import Processes from './components/Processes';
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
                 </Route>
                 <Route path="/admin">
                     <AdminView/>
+                </Route>
+                <Route path="/processes">
+                    <Processes/>
                 </Route>
                 <Route path="/login">
                     <LoginView/>
