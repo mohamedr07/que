@@ -13,6 +13,9 @@ import CardTest from './components/CardTest';
 import Providers from './components/providers/Providers'
 import Stations from './components/stations/Stations'
 import Queues from './components/queues/Queues'
+import CreateProvider from "./components/providers/CreateProviderView";
+import CreateStation from "./components/stations/CreateStationView";
+import CreateQueue from "./components/queues/CreateQueueView";
 
 function App() {
   return (
@@ -53,12 +56,18 @@ function App() {
               <Route path="/providers">
                 <Providers />
               </Route>
+              <Route path="/createProvider" component={CreateProvider} />
+
               <Route path="/stations">
                 <Stations />
               </Route>
+              <Route path="/createStation" component={CreateStation} />
+
               <Route path="/queues">
                 <Queues />
               </Route>
+              <Route path="/createQueue" component={CreateQueue} />
+
             </Switch>
           </div>
         </section>

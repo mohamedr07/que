@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from "react-router-dom";
 
 export class Providers extends Component {
 
@@ -37,7 +38,7 @@ export class Providers extends Component {
                     </div> 
                     ))}
                 </div>
-                <button type="button" class="btn btn-primary btn-add">Add</button>
+                <Link to="/createProvider" class="btn btn-primary btn-add">Add</Link>
             </div>
         );
     }
