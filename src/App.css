@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #f0f3bd !important;
+  background-color: #D1D1D1 !important;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
@@ -19,9 +19,12 @@ a {
 	background-color: #262728; 
 } 
 
-.navbar-grey .navbar-text , 
+.navbar-grey .navbar-text {
+  color: #D1D1D1;
+}
+
 .navbar-grey .navbar-brand {
-  color:slategray;
+  color: #DADADA;
 }
 
 .btn-primary {
@@ -36,4 +39,9 @@ a {
 
 .card-img-top {
   border-radius: 10px !important;
+}
+
+.btn-shape {
+  border-radius: .5rem !important;
+  margin: .25rem;
 }
