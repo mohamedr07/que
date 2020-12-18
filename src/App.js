@@ -9,6 +9,9 @@ import AdminProviderEditView from './components/AdminProviderEditView';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Processes from './components/Processes';
 import CardTest from './components/CardTest';
+import Providers from './components/Providers'
+import Stations from './components/Stations'
+import Queues from './components/Queues'
 
 function App() {
   return (
@@ -43,6 +46,15 @@ function App() {
               </Route>
               <Route path="/register">
                 <RegisterView />
+              </Route>
+              <Route path="/providers">
+                <Providers />
+              </Route>
+              <Route path="/stations">
+                <Stations />
+              </Route>
+              <Route path="/queues">
+                <Queues />
               </Route>
             </Switch>
           </div>
