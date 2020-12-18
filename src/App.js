@@ -14,8 +14,8 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
-
-        <section className="App-header d-flex align-items-center min-vh-100">
+        {/* align-items-center */}
+        <section className="App-header d-flex  min-vh-100">
           <div className="container text-center">
             <Switch>
               <Route path="/home">

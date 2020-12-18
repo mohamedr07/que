@@ -2,8 +2,6 @@
 {
   -webkit-box-sizing:border-box;
   box-sizing: border-box;
-  font-size: 20px;
-  font-family: sans-serif;
 }
 header
 {
@@ -31,7 +29,6 @@ a
 section .container
 {
   margin: 5px auto;
-  width: 1100px;
 }
 section .container .flex
 {
@@ -152,8 +149,6 @@ section .Form form table .t button
   {
     -webkit-box-sizing:border-box;
     box-sizing: border-box;
-    font-size: 22px;
-    font-family: sans-serif;
   }
   header
   {
@@ -233,8 +228,6 @@ section .Form form table .t button
   {
     -webkit-box-sizing:border-box;
     box-sizing: border-box;
-    font-size: 20px;
-    font-family: sans-serif;
   }
   header
   {
@@ -311,8 +304,7 @@ section .Form form table .t button
   {
     -webkit-box-sizing:border-box;
     box-sizing: border-box;
-    font-size: 20px;
-    font-family: sans-serif;
+
   }
   header
   {

@@ -52,6 +52,6 @@ a {
   margin-bottom: 50px !important;
 }
 
-.navbar-toggler {
-  color: #DADADA !important;
+.btn-add {
+  padding: 5px 50px !important;
 }
