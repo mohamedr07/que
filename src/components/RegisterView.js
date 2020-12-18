@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../styles/login.css'
 
-export class Home extends Component {
+export class RegisterView extends Component {
     render() {
         return (
             <div class="login">
@@ -48,4 +48,4 @@ export class Home extends Component {
     }
 }
 
-export default Home
+export default RegisterView

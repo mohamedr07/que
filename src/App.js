@@ -8,6 +8,7 @@ import AdminProviderView from './components/AdminProviderView';
 import AdminProviderEditView from './components/AdminProviderEditView';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Processes from './components/processes/Processes';
+import CreateProcess from './components/processes/CreateProcessView';
 import CardTest from './components/CardTest';
 import Providers from './components/providers/Providers'
 import Stations from './components/stations/Stations'
@@ -38,6 +39,8 @@ function App() {
               <Route path="/processes">
                 <Processes />
               </Route>
+              <Route path="/createProcess" component={CreateProcess} />
+
               <Route path="/card">
                 <CardTest />
               </Route>

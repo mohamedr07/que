@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/login.css'
 
-export class Home extends Component {
+export class LoginView extends Component {
     render() {
         return (
             <div class="login">
@@ -45,4 +45,4 @@ export class Home extends Component {
     }
 }
 
-export default Home
+export default LoginView

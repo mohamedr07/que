@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 
 export class Processes extends Component {
 
@@ -38,7 +39,7 @@ export class Processes extends Component {
                     </div> 
                     ))}
                 </div>
-                <button type="button" class="btn btn-primary btn-add">Add</button>
+                <Link to="/createProcess" class="btn btn-primary btn-add">Add</Link>
             </div>
         );
     }
