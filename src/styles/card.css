@@ -51,7 +51,7 @@
 .card-container .card:hover .box {
   transform: translateY(-50px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(45deg, #70af85, #16697a);
+  background: linear-gradient(45deg, #8E8E8E, #262728);
 }
 
 .card-container .card .box .content {
@@ -88,6 +88,17 @@
   transition: 0.5s;
 }
 
+.card-container .card .box .content a {
+  font-size: 1em;
+  font-weight: 300;
+  color: #777;
+  z-index: 1;
+  transition: 0.5s;
+  text-decoration: none;
+}
+.card-container .card:hover .box .content a {
+  color: #fff;
+}
 .card-container .card:hover .box .content .card-title,
 .card-container .card:hover .box .content .card-text {
   color: #fff;
