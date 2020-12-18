@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/task.css';
+import { Link } from 'react-router-dom';
 const AdminProviderEditView = () => {
   return (
     <div classNameName="forms">
@@ -70,7 +71,7 @@ const AdminProviderEditView = () => {
               <tr className="t">
                 <td colspan="2">
                   <button type="submit" name="button" onclick="add()">
-                    <a href="#">Submit</a>
+                    <Link to="/admin/providers">Submit</Link>
                   </button>
                 </td>
               </tr>
