@@ -27,7 +27,7 @@ export class AdminView extends Component {
                         <div class="card-body">
                             <h5 class="card-title">Providers</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="#" class="btn btn-primary">View providers</a>
                         </div>
                     </div> 
                 </div>
@@ -37,7 +37,7 @@ export class AdminView extends Component {
                         <div class="card-body">
                             <h5 class="card-title">Stations</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="#" class="btn btn-primary">View stations</a>
                         </div>
                     </div> 
                 </div>
@@ -47,7 +47,7 @@ export class AdminView extends Component {
                         <div class="card-body">
                             <h5 class="card-title">Queues</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="#" class="btn btn-primary">View queues</a>
                         </div>
                     </div> 
                 </div>

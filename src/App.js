@@ -21,8 +21,8 @@ function App() {
       <Router>
       
       <Navbar />
-
-      <section className="App-header d-flex align-items-center min-vh-100">
+      {/* d-flex align-items-center min-vh-100 */}
+      <section className="App-header d-flex min-vh-100">
         <div className="container text-center">
             <Switch>
                 <Route path="/home">
