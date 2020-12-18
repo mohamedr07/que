@@ -7,11 +7,11 @@ import Home from './components/Home';
 import AdminProviderView from './components/AdminProviderView';
 import AdminProviderEditView from './components/AdminProviderEditView';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Processes from './components/Processes';
+import Processes from './components/processes/Processes';
 import CardTest from './components/CardTest';
-import Providers from './components/Providers'
-import Stations from './components/Stations'
-import Queues from './components/Queues'
+import Providers from './components/providers/Providers'
+import Stations from './components/stations/Stations'
+import Queues from './components/queues/Queues'
 
 function App() {
   return (
