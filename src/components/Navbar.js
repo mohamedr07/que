@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import qImage from '../resources/Q.png'
 
 export class Navbar extends Component {
     render() {
@@ -8,7 +9,7 @@ export class Navbar extends Component {
 
                 <nav class="navbar navbar-expand-sm navbar-grey">
                     <div className="container">
-                        <a class="navbar-brand" href="#">Navbar</a>
+                        <img class="navbar-brand" src={qImage}/>
                         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon "></span>
                         </button>
