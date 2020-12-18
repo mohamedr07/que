@@ -35,6 +35,8 @@ a {
 .card {
   border-radius: 10px !important;
   box-shadow: 0 0 20px 0 rgba(100, 100, 100, 0.26) !important;
+  margin: 10px !important;
+  padding: 5px;
 }
 
 .card-img-top {
@@ -44,4 +46,12 @@ a {
 .btn-shape {
   border-radius: .5rem !important;
   margin: .25rem;
+}
+
+.navbar {
+  margin-bottom: 50px !important;
+}
+
+.navbar-toggler {
+  color: #DADADA !important;
 }
