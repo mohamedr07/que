@@ -5,6 +5,7 @@
 }
 
 body {
+  background-color: #f0f3bd !important;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
@@ -26,4 +27,13 @@ a {
 .btn-primary {
   background-color: #262728 !important; 
   border: none !important;
+}
+
+.card {
+  border-radius: 10px !important;
+  box-shadow: 0 0 20px 0 rgba(100, 100, 100, 0.26) !important;
+}
+
+.card-img-top {
+  border-radius: 10px !important;
 }
