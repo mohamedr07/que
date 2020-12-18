@@ -8,6 +8,7 @@ import AdminProviderView from './components/AdminProviderView';
 import AdminProviderEditView from './components/AdminProviderEditView';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Processes from './components/Processes';
+import CardTest from './components/CardTest';
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
 
               <Route path="/processes">
                 <Processes />
+              </Route>
+              <Route path="/card">
+                <CardTest />
               </Route>
               <Route path="/login">
                 <LoginView />
