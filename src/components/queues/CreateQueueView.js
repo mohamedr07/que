@@ -20,7 +20,7 @@ export class CreateQueue extends Component {
                                     <label for="TextField">Name</label>
                                 </div>
                                 <div className="form-label-group">
-                                    <input type="text" id="TextField2" class="form-control btn-shape" placeholder="TextField" />
+                                    <input type="number" step="0.25" id="TextField2" class="form-control btn-shape" placeholder="TextField" />
                                     <label for="TextField2">Estimated time</label>
                                 </div>
                                 <button type="submit" className="btn btn-primary btn-shape ">Submit</button>
