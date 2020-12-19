@@ -13,7 +13,7 @@ export class Processes extends Component {
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-4">Processes</h1>
-                        <p class="lead">a description about processes</p>
+                        <p class="lead">a description about process</p>
                     </div>
                 </div>          
                 <br/><br/>    

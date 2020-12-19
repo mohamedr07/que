@@ -16,6 +16,7 @@ import Queues from './components/queues/Queues'
 import CreateProvider from "./components/providers/CreateProviderView";
 import CreateStation from "./components/stations/CreateStationView";
 import CreateQueue from "./components/queues/CreateQueueView";
+import ProviderHome from './components/ProviderHome'
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
             <Switch>
               <Route path="/home">
                 <Home />
+              </Route>
+              <Route path="/providerHome">
+                <ProviderHome />
               </Route>
               <Route path="/admin" exact>
                 <AdminView />

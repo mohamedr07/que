@@ -7,19 +7,19 @@ export class RegisterView extends Component {
             <div class="login">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
                             <div class="card card-signin my-5">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">Sign Up</h5>
                                     <form class="form-signin">
                                         <div class="form-label-group ">
                                             <input type="text" id="TextField" class="form-control btn-shape" placeholder="TextField" required autofocus />
-                                            <label for="TextField">Username</label>
+                                            <label for="TextField">Name</label>
                                         </div>
                                         <div class="form-label-group">
                                             <input type="email" id="inputEmail" class="form-control btn-shape" placeholder="Email address" required autofocus />
                                             <label for="inputEmail">Email address</label>
-                                            </div>
+                                        </div>
                                         <div class="form-label-group">
                                             <input type="password" id="inputPassword" class="form-control btn-shape" placeholder="Password" required />
                                             <label for="inputPassword">Password</label>

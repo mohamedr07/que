@@ -8,7 +8,7 @@ export class LoginView extends Component {
             <div class="login">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
                             <div class="card card-signin my-5">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">Sign In</h5>
@@ -23,9 +23,11 @@ export class LoginView extends Component {
                                             <label for="inputPassword">Password</label>
                                         </div>
 
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input mt-2 btn-shape" id="customCheck1" />
-                                            <label class="custom-control-label" for="customCheck1">Remember password</label>
+                                        <div class="custom-control custom-checkbox mb-2">
+                                            <input type="checkbox" class="custom-control-input btn-shape" id="customCheck1" />
+                                            <label class="custom-control-label" for="customCheck1">Stay signed in</label>
+                                            <input type="checkbox" class="custom-control-input btn-shape" id="customCheck1" />
+                                            <label class="custom-control-label" for="customCheck1">Sign in as provider</label>
                                         </div>
                                         <a href="#">Forget password</a>
                                         <br/>
