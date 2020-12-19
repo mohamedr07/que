@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 
 export class CreateStation extends Component {
     render() {
+        let queues = ['queue 1', 'queue 2', 'queue 3'];
+        let providers = ['provider 1', 'provider 2', 'provider 3'];
+
         return (
             <div className="container">
                 <div className="jumbotron jumbotron-fluid">
@@ -22,15 +25,17 @@ export class CreateStation extends Component {
                                 <div className="form-label-group">
                                     <select class="form-select btn-shape" aria-label="Default select example">
                                         <option selected>Select queue</option>
-                                        <option value="1">Queue 1</option>
-                                        <option value="2">Queue 2</option>
+                                        {queues.map((queue, index) => (
+                                            <option value={index}>{queue}</option>
+                                        ))}
                                     </select>
                                 </div>
                                 <div className="form-label-group">
                                     <select class="form-select btn-shape" aria-label="Default select example">
                                         <option selected>Select provider</option>
-                                        <option value="1">provider 1</option>
-                                        <option value="2">provider 2</option>
+                                        {providers.map((provider, index) => (
+                                            <option value={index}>{provider}</option>
+                                        ))}
                                     </select>
                                 </div>
                                 <button type="submit" className="btn btn-primary btn-shape">Submit</button>
