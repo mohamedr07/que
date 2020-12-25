@@ -34,9 +34,6 @@
   background: #f7f0e4;
 }
 
-.card-container .card:hover {
-  /* background: #fbf7f1; */
-}
 
 .card-container .card .box {
   position: absolute;

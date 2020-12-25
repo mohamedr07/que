@@ -34,17 +34,17 @@ export class Home extends Component {
                                                 </div>
                                                 <div className="align-left-h">
                                                     <label id="l1" className="p-1 txt-dec-bold">Current queue:</label>
-                                                    <label id="l2" className="p-1 txt-dec">Payment</label>
+                                                    <label id="l2" className="p-1 txt-dec">Dentist clinic</label>
                                                 </div>
                                                 <div className="align-left-h">
                                                     <label id="l1" className="p-1 txt-dec-bold">Total estimated time:</label>
-                                                    <label id="l2" className="p-1 txt-dec">15:00 mins</label>
+                                                    <label id="l2" className="p-1 txt-dec">3:12 mins</label>
                                                 </div>
                                                 </div>
                                             </div>
                                         </form>
                                         <div className="col-lg-6 col-md-12">
-                                            <label className="btn btn-primary btn-circle">10<div className="est-time">Queue estimated time: 3:12 mins</div></label>
+                                            <label className="btn btn-circle">10<div className="est-time">Queue estimated time: 3:12 mins</div></label>
                                         </div>
                                         <div className="container container-2 row ">
                                             <h2 className="align-left-h">Listed Queues</h2>
@@ -52,7 +52,7 @@ export class Home extends Component {
                                                 <div class="progresses">
                                                     <div class="steps"> <span><i class="bi bi-check"></i></span> </div> <span class="line"></span>
                                                     <div class="steps"> <span><i class="bi bi-check"></i></span> </div> <span class="line"></span>
-                                                    <div class="steps"> <span class="font-weight-bold">3</span> </div>
+                                                    <div class="steps"> <span class="font-weight-bold">03</span> </div>
                                                 </div>
                                             </div>
                                             <div className="col-lg-4 col-md-12">

@@ -32,7 +32,7 @@ export class ProviderHome extends Component {
                                             </div>                                     
                                         </form>
                                         <div className="col-lg-6 col-md-12">
-                                            <button className="btn btn-primary btn-circle">10<div className="est-time">Current in queue</div></button>
+                                            <button className="btn btn-circle">10<div className="est-time">Current in queue</div></button>
                                         </div>
 
                                     </div>

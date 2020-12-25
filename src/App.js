@@ -17,7 +17,8 @@ import CreateProvider from "./components/providers/CreateProviderView";
 import CreateStation from "./components/stations/CreateStationView";
 import CreateQueue from "./components/queues/CreateQueueView";
 import ProviderHome from './components/ProviderHome'
-
+import AssignProvider from "./components/providers/AssignProvider";
+import UserProcesses from "./components/UserProcesses"
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,9 @@ function App() {
         <section className="App-header d-flex  min-vh-100">
           <div className="container text-center">
             <Switch>
+              <Route exact path="/">
+                <UserProcesses />
+              </Route>
               <Route path="/home">
                 <Home />
               </Route>
@@ -60,7 +64,11 @@ function App() {
               <Route path="/providers">
                 <Providers />
               </Route>
-              <Route path="/createProvider" component={CreateProvider} />
+              <Route path="/assignprovider">
+                <AssignProvider />
+              </Route>
+
+              <Route path="/createprovider" component={CreateProvider} />
 
               <Route path="/stations">
                 <Stations />

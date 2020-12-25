@@ -38,7 +38,7 @@ export class Providers extends Component {
                     </div> 
                     ))}
                 </div>
-                <Link to="/createProvider" class="btn btn-primary btn-add">Add</Link>
+                <Link to="/assignprovider" class="btn btn-primary btn-add">Add</Link>
             </div>
         );
     }
