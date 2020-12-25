@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import processImage from '../resources/process.jpg'
-import providerImage from '../resources/provider.jpg'
-import queueImage from '../resources/queue.jpg'
-import stationImage from '../resources/station.jpg'
+import processImage from '../resources/process3.jpg'
+import providerImage from '../resources/provider3.jpg'
+import queueImage from '../resources/queue3.jpg'
+import stationImage from '../resources/station3.jpg'
 import { Link } from 'react-router-dom';
 
 export class AdminView extends Component {
@@ -19,7 +19,7 @@ export class AdminView extends Component {
                                     <img src={processImage} class="card-img-top" alt="..." />
                                     <h5 class="card-title">Processes</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <Link to="/processes"class="btn btn-primary">View processes</Link>
+                                    <Link to="/processes"class="btn btn-card">View processes</Link>
                                 </div>
                             </div>
                         </div>   
@@ -33,7 +33,7 @@ export class AdminView extends Component {
                                     <img src={providerImage} class="card-img-top" alt="..." />
                                     <h5 class="card-title">Providers</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <Link to="/providers"class="btn btn-primary">View providers</Link>
+                                    <Link to="/providers"class="btn btn-card">View providers</Link>
                                 </div>
                             </div>
                         </div>   
@@ -47,7 +47,7 @@ export class AdminView extends Component {
                                     <img src={stationImage} class="card-img-top" alt="..." />
                                     <h5 class="card-title">Stations</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <Link to="/stations"class="btn btn-primary">View stations</Link>
+                                    <Link to="/stations"class="btn btn-card">View stations</Link>
                                 </div>
                             </div>
                         </div>   
@@ -61,7 +61,7 @@ export class AdminView extends Component {
                                     <img src={queueImage} class="card-img-top" alt="..." />
                                     <h5 class="card-title">Queues</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <Link to="/queues"class="btn btn-primary">View queues</Link>
+                                    <Link to="/queues"class="btn btn-card">View queues</Link>
                                 </div>
                             </div>
                         </div>   

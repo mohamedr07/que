@@ -55,7 +55,6 @@ export class CreateProcess extends Component {
 				<div className="jumbotron jumbotron-fluid">
 					<div className="container">
 						<h1 className="display-4">Add Process</h1>
-						<p className="lead">a description about processes</p>
 					</div>
 				</div>
 				<br/><br/>

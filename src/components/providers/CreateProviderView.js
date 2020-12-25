@@ -8,7 +8,6 @@ export class CreateProvider extends Component {
 				<div className="jumbotron jumbotron-fluid">
 					<div className="container">
 						<h1 className="display-4">Add provider</h1>
-						<p className="lead">a description about provider</p>
 					</div>
 				</div>
 				<br/><br/>

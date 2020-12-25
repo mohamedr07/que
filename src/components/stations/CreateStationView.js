@@ -10,7 +10,6 @@ export class CreateStation extends Component {
                 <div className="jumbotron jumbotron-fluid">
                     <div className="container">
                         <h1 className="display-4">Add Station</h1>
-                        <p className="lead">a description about station</p>
                     </div>
                 </div>
                 <br/><br/>

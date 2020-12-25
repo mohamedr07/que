@@ -31,6 +31,11 @@
     5px 5px 5px rgba(0, 0, 0, 0.5), -5px -5px 5px rgba(255, 255, 255, 0.5);
   border-radius: 15px;
   margin: 30px;
+  background: #f7f0e4;
+}
+
+.card-container .card:hover {
+  /* background: #fbf7f1; */
 }
 
 .card-container .card .box {
@@ -39,8 +44,8 @@
   left: 20px;
   right: 20px;
   bottom: 20px;
-  background: #ebf5fc;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: #f7f0e4;
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
   border-radius: 15px;
   display: flex;
   justify-content: center;
@@ -51,7 +56,7 @@
 .card-container .card:hover .box {
   transform: translateY(-50px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(45deg, #8E8E8E, #262728);
+  background: linear-gradient(45deg, #006F67, #013a70);
 }
 
 .card-container .card .box .content {
@@ -75,7 +80,7 @@
 
 .card-container .card .box .content .card-title {
   font-size: 1.8em;
-  color: #777;
+  color: #006F67;
   z-index: 1;
   transition: 0.5s;
 }
@@ -83,7 +88,7 @@
 .card-container .card .box .content .card-text {
   font-size: 1em;
   font-weight: 300;
-  color: #777;
+  color: #006F67;
   z-index: 1;
   transition: 0.5s;
 }
@@ -91,17 +96,24 @@
 .card-container .card .box .content a {
   font-size: 1em;
   font-weight: 300;
-  color: #777;
+  color: #006F67;
   z-index: 1;
   transition: 0.5s;
   text-decoration: none;
 }
+.card-container .card .box .content .btn-card {
+  border: #006F67 2px solid !important;
+}
+
+.card-container .card:hover .box .content .btn-card {
+  border: #f7f0e4 2px solid !important;
+}
 .card-container .card:hover .box .content a {
-  color: #fff;
+  color: #f7f0e4;
 }
 .card-container .card:hover .box .content .card-title,
 .card-container .card:hover .box .content .card-text {
-  color: #fff;
+  color: #f7f0e4;
 }
 
 .card-container .card .box .content .card-link {
@@ -111,7 +123,7 @@
   background: #16697a;
   margin-top: 15px;
   border-radius: 20px;
-  color: #fff;
+  color: #f7f0e4;
   text-decoration: none;
   font-weight: 400;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);

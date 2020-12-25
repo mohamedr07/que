@@ -1,3 +1,5 @@
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-  background-color: #D1D1D1 !important;
+  background: #f7f0e4 !important;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
@@ -16,19 +18,19 @@ a {
 }
 
 .navbar-grey { 
-	background-color: #262728; 
+	background: linear-gradient(45deg, #006F67, #013a70);
 } 
 
 .navbar-grey .navbar-text {
-  color: #D1D1D1;
+  color: #f7f0e4;
 }
 
 .navbar-grey .navbar-brand {
-  color: #DADADA;
+  color: #f7f0e4;
 }
 
 .btn-primary {
-  background-color: #262728 !important; 
+  background: linear-gradient(45deg, #006F67, #013a70);
   border: none !important;
 }
 
@@ -58,21 +60,84 @@ a {
 
 .align-left-h {
   text-align: left !important;
+  margin-left: 10px;
 }
 .txt-dec {
   margin: 4px 2px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+  font-family:Arial, Helvetica, sans-serif !important;
   color: #262728;
 }
 
+.txt-dec-bold {
+  margin: 4px 2px;
+  font-family:Arial, Helvetica, sans-serif !important;
+  font-weight: bold;
+  color: #006F67;
+}
+
 .btn-circle {
-  padding:70px 90px !important;
+  padding:40px 70px !important;
   border-radius: 500px !important;
   font-size: 120px !important;
-  color:#D1D1D1 !important;
+  color:#f7f0e4 !important;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .est-time {
   font-size: 10px !important;
+}
+
+
+
+.container-2 {
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.container-2 h2{
+  color: #006F67;
+}
+
+.card-number {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  color: rgba(0, 45, 71, 0.2) !important;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.container-2 .card-title {
+  color: #006F67;
+}
+
+.card {
+  background: #f7f0e4 !important;
+}
+.progresses {
+  display: flex;
+  align-items: center
+}
+.line {
+  width: 120px;
+  height: 6px;
+  background: #006F67
+}
+
+.steps {
+  display: flex;
+  background-color: #006F67;
+  color: #fff;
+  font-size: 14px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%
+}
+
+.jumbotron h1 {
+  color: #006F67;
 }
