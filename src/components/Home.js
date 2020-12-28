@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export class Home extends Component {
     render() {
@@ -21,30 +22,33 @@ export class Home extends Component {
                                         <form class="form-signin col-lg-6 col-md-12">
                                             <div class="card">
                                                 <div class="card-body">
-                                                <div className="align-left-h">
-                                                    <label id="l1" className="p-1 txt-dec-bold">Name:</label>
-                                                    <label id="l2" className="p-1 txt-dec">Mohamed Rashad</label>
-                                                </div>
-                                                <div className="align-left-h">
-                                                    <label id="l1" className="p-1 txt-dec-bold">ID:</label>
-                                                    <label id="l2" className="p-1 txt-dec">#1235</label>                                </div>
-                                                <div className="align-left-h">
-                                                    <label id="l1" className="p-1 txt-dec-bold">Current service:</label>
-                                                    <label id="l2" className="p-1 txt-dec">Dentist</label>
-                                                </div>
-                                                <div className="align-left-h">
-                                                    <label id="l1" className="p-1 txt-dec-bold">Current queue:</label>
-                                                    <label id="l2" className="p-1 txt-dec">Dentist clinic</label>
-                                                </div>
-                                                <div className="align-left-h">
-                                                    <label id="l1" className="p-1 txt-dec-bold">Total estimated time:</label>
-                                                    <label id="l2" className="p-1 txt-dec">3:12 mins</label>
-                                                </div>
+                                                    <div className="align-left-h">
+                                                        <label id="l1" className="p-1 txt-dec-bold">Name:</label>
+                                                        <label id="l2" className="p-1 txt-dec">Mohamed Rashad</label>
+                                                    </div>
+                                                    <div className="align-left-h">
+                                                        <label id="l1" className="p-1 txt-dec-bold">ID:</label>
+                                                        <label id="l2" className="p-1 txt-dec">#1235</label>                                </div>
+                                                    <div className="align-left-h">
+                                                        <label id="l1" className="p-1 txt-dec-bold">Current service:</label>
+                                                        <label id="l2" className="p-1 txt-dec">Dentist</label>
+                                                    </div>
+                                                    <div className="align-left-h">
+                                                        <label id="l1" className="p-1 txt-dec-bold">Current queue:</label>
+                                                        <label id="l2" className="p-1 txt-dec">Dentist clinic</label>
+                                                    </div>
+                                                    <div className="align-left-h">
+                                                        <label id="l1" className="p-1 txt-dec-bold">Total estimated time:</label>
+                                                        <label id="l2" className="p-1 txt-dec">3:12 mins</label>
+                                                    </div>
+                                                    <div className="align-left-h">
+                                                        <Link to="/" className="btn btn-primary btn-shape btn-add ">Drop Service</Link>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </form>
                                         <div className="col-lg-6 col-md-12">
-                                            <label className="btn btn-circle">10<div className="est-time">Queue estimated time: 3:12 mins</div></label>
+                                            <label className="btn btn-circle mt-4">10<div className="est-time">Queue estimated time: 3:12 mins</div></label>
                                         </div>
                                         <div className="container container-2 row ">
                                             <h2 className="align-left-h">Listed Queues</h2>

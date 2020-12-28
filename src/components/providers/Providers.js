@@ -23,6 +23,15 @@ export class Providers extends Component {
                         <div className="card-container">
                             <div class="card">
                                 <div className="box">
+                                    <div class="v-menu-btn dropdown">
+                                        <button class="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical v-menu-icon"></i> 
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        </ul>
+                                    </div>
                                     <div className="content">
                                     <h3 className="card-title">{providerItem}</h3>
                                     <div className="card-text">

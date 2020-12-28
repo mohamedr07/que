@@ -54,6 +54,7 @@
   transform: translateY(-50px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   background: linear-gradient(45deg, #006F67, #013a70);
+  z-index: 1;
 }
 
 .card-container .card .box .content {
@@ -128,4 +129,18 @@
 
 .card-container .card:hover .box .content .card-link {
   background: #ff568f;
+}
+
+.v-menu-btn {
+  position: absolute !important;
+  top: 0px !important;
+  right: -10px !important; 
+}
+
+.v-menu-icon {
+  color:#006F67 !important;
+  font-size: 1.2em !important;
+}
+.card-container .card:hover .box .v-menu-icon {
+  color:#ffffff !important;
 }

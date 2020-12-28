@@ -10,6 +10,8 @@ export class Processes extends Component {
 
         return (
             <div className="container">
+                
+                
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-4">Processes</h1>
@@ -21,8 +23,17 @@ export class Processes extends Component {
                     {processesItems.map(processItem => (
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div className="card-container">
-                            <div class="card">
+                            <div className="card">
                                 <div className="box">
+                                    <div class="v-menu-btn dropdown">
+                                        <button class="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical v-menu-icon"></i> 
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        </ul>
+                                    </div>
                                     <div className="content">
                                     <h3 className="card-title">{processItem}</h3>
                                     <div className="card-text">
@@ -40,6 +51,7 @@ export class Processes extends Component {
                     ))}
                 </div>
                 <Link to="/createProcess" class="btn btn-primary btn-add">Add</Link>
+                
             </div>
         );
     }
