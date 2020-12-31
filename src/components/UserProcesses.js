@@ -42,8 +42,8 @@ function UserProcesses(props) {
                 <br/><br/> 
                 <div className="row">
                     {processes.map(p => (
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div className="form-signin">
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div className="form-signin hvr-grow-shadow">
                             <div className={p.active ? "card processTrue": "card processFalse"} onClick={() => handleOptionChange(p)}>
                                 <div className="card-body">
                                     <h3 className="card-title">{p.name}</h3>
