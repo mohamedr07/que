@@ -49,9 +49,9 @@ function UserProcesses(props) {
                                     <h3 className="card-title">{p.name}</h3>
                                     <div className="card-text">
                                         <ul className="list-unstyled">
-                                            <li><a href="#">Queue 1</a></li>
-                                            <li><a href="#">Queue 2</a></li>
-                                            <li><a href="#">Queue 3</a></li>
+                                            <li><label>Queue 1</label></li>
+                                            <li><label>Queue 2</label></li>
+                                            <li><label>Queue 3</label></li>
                                         </ul>
                                     </div>
                                 </div>
