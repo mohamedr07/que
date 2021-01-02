@@ -7,27 +7,27 @@ export class Navbar extends Component {
         return (
             <div>
 
-                <nav class="navbar navbar-expand-sm navbar-grey">
+                <nav className="navbar navbar-expand-sm navbar-grey">
                     <div className="container">
-                        <a href="/"><img class="navbar-brand" src={qImage}/></a>
+                        <Link to="/"><img className="navbar-brand" src={qImage}/></Link>
                         
-                        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon "></span>
+                        <button className="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon "></span>
                         </button>
 
-                        <div class="collapse navbar-collapse " id="navbarNav">
-                            <ul class="navbar-nav ">
-                                <li class="nav-item">
-                                    <Link to="/home" class="nav-link navbar-text">Home</Link>
+                        <div className="collapse navbar-collapse " id="navbarNav">
+                            <ul className="navbar-nav ">
+                                <li className="nav-item">
+                                    <Link to="/home" className="nav-link navbar-text">Home</Link>
                                 </li>
-                                <li class="nav-item">
-                                    <Link to="/admin" class="nav-link navbar-text">Admin</Link>
+                                <li className="nav-item">
+                                    <Link to="/admin" className="nav-link navbar-text">Admin</Link>
                                 </li>
-                                <li class="nav-item">
-                                    <Link to="/providerHome" class="nav-link navbar-text">Provider</Link>
+                                <li className="nav-item">
+                                    <Link to="/providerHome" className="nav-link navbar-text">Provider</Link>
                                 </li>
-                                <li class="nav-item">
-                                    <Link to="/login" class="nav-link navbar-text">Login</Link>
+                                <li className="nav-item">
+                                    <Link to="/login" className="nav-link navbar-text">Login</Link>
                                 </li>
                             </ul>
                         </div>

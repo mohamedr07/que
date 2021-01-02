@@ -6,9 +6,8 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import AdminProviderView from './components/AdminProviderView';
 import AdminProviderEditView from './components/AdminProviderEditView';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Processes from './components/processes/Processes';
-import CreateProcess from './components/processes/CreateProcessView';
 import CardTest from './components/CardTest';
 import Providers from './components/providers/Providers'
 import Stations from './components/stations/Stations'
@@ -19,6 +18,8 @@ import CreateQueue from "./components/queues/CreateQueueView";
 import ProviderHome from './components/ProviderHome'
 import AssignProvider from "./components/providers/AssignProvider";
 import UserProcesses from "./components/UserProcesses"
+import addProcess from './components/processes/AddProcess'
+import AddProcess from './components/processes/AddProcess';
 function App() {
   return (
     <div className="App">
@@ -50,8 +51,6 @@ function App() {
               <Route path="/processes">
                 <Processes />
               </Route>
-              <Route path="/createProcess" component={CreateProcess} />
-
               <Route path="/card">
                 <CardTest />
               </Route>
@@ -77,6 +76,9 @@ function App() {
 
               <Route path="/queues">
                 <Queues />
+              </Route>
+              <Route path="/addprocess">
+                <AddProcess />
               </Route>
               <Route path="/createQueue" component={CreateQueue} />
 

@@ -39,6 +39,12 @@ a {
   box-shadow: 0 0 20px 0 rgba(100, 100, 100, 0.26) !important;
   margin: 10px !important;
   padding: 5px;
+  cursor: pointer;
+}
+
+.card-user {
+  margin: 30px 10px !important;
+  min-height: 435px ;
 }
 
 .card-img-top {
@@ -180,4 +186,9 @@ a {
 .hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+
+.delete-icon {
+  font-size: 1.2em !important;
 }
