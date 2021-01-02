@@ -18,8 +18,9 @@ import CreateQueue from "./components/queues/CreateQueueView";
 import ProviderHome from './components/ProviderHome'
 import AssignProvider from "./components/providers/AssignProvider";
 import UserProcesses from "./components/UserProcesses"
-import addProcess from './components/processes/AddProcess'
 import AddProcess from './components/processes/AddProcess';
+import EditProcess from './components/processes/EditProcess';
+
 function App() {
   return (
     <div className="App">
@@ -79,6 +80,9 @@ function App() {
               </Route>
               <Route path="/addprocess">
                 <AddProcess />
+              </Route>
+              <Route path="/editprocess">
+                <EditProcess />
               </Route>
               <Route path="/createQueue" component={CreateQueue} />
 
