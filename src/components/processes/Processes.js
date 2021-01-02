@@ -5,7 +5,7 @@ import {  deleteProcess } from "../../actions"
 
 function Processes() {
 
-    const processesItems = useSelector(state => state.processReducer)
+    const processesItems =  useSelector(state => state.processReducer)
     const dispatch = useDispatch();
     return (
         <div className="container">
@@ -35,9 +35,9 @@ function Processes() {
                                     <h3 className="card-title">{processItem.name}</h3>
                                     <div className="card-text">
                                         <ul className="list-unstyled">
-                                            {processItem.processQueues.map((q, i) => {
+                                            {processItem.processQueues ? processItem.processQueues.map((q, i) => {
                                                 return <li key={i}>{q.name}</li>
-                                            })}   
+                                            }): null}   
                                         </ul>
                                     </div>
                                 </div>
