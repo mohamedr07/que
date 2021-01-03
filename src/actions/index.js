@@ -29,3 +29,10 @@ export const deleteProcess = (processNumber) => {
     }
 }
 
+export const addQueue = (q) => {
+    return {
+        type: 'ADD_QUEUE',
+        payload: q
+    }
+}
+

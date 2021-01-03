@@ -6,7 +6,6 @@ import {  deleteProcess, selectProcess } from "../../actions"
 
 function Processes() {
 
-    
     const processesItems =  useSelector(state => state.processReducer)
     const dispatch = useDispatch();
     return (
@@ -29,7 +28,11 @@ function Processes() {
                                         <i className="bi bi-three-dots-vertical v-menu-icon"></i> 
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><Link to= "/editprocess" onClick = {() => dispatch(selectProcess(index))} className="dropdown-item" href="#">Edit</Link></li>
+                                        <li>
+                                            <Link to= {`/editprocess/${index}`} onClick = {() => {
+                                            dispatch(selectProcess(index))
+                                            }} className="dropdown-item" href="#">Edit</Link>
+                                        </li>
                                         <li><a onClick = {() => dispatch(deleteProcess(index))} className="dropdown-item" href="#">Delete</a></li>
                                     </ul>
                                 </div>

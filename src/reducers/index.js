@@ -1,10 +1,10 @@
 import processReducer from "./processReducer";
-import editReducer from "./editReducer"
+import queuesReducer from "./queuesReducer"
 import { combineReducers } from "redux"
 
 const allReducer = combineReducers({
     processReducer,
-    editReducer
+    queuesReducer,
 });
 
 export default allReducer;

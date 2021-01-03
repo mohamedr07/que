@@ -7,17 +7,17 @@ const availableProcesses = [
         active: false,
         processQueues: [
             {
-                name: 'Payment',
-                 id: 1
+                id: 1,
+                name: 'Payment' 
             },
             {
-                name: 'Assessment',
-                 id: 2
+                id: 2,
+                name: 'Assessment'
             },
             {
-                name: 'Dentistry clinic',
-                 id: 3
-            },
+                id: 4,
+                name: 'Dentistry clinic'
+            }
         ]
     }, 
     {
@@ -27,17 +27,17 @@ const availableProcesses = [
         active: false,
         processQueues: [
             {
-                name: 'Payment',
-                 id: 1
+                id: 1,
+                name: 'Payment' 
             },
             {
-                name: 'Assessment',
-                 id: 2
+                id: 2,
+                name: 'Assessment'
             },
             {
-                name: 'Surgery clinic',
-                 id: 4
-            },
+                id: 5,
+                name: 'Surgery clinic'
+            }
         ]
     },
     {
@@ -47,17 +47,17 @@ const availableProcesses = [
         active: false,
         processQueues: [
             {
-                name: 'Payment',
-                 id: 1
+                id: 1,
+                name: 'Payment' 
             },
             {
-                name: 'Assessment',
-                 id: 2
+                id: 2,
+                name: 'Assessment'
             },
             {
-                name: 'Orthopedic clinic',
-                 id: 5
-            },
+                id: 6,
+                name: 'Orthopedic clinic'
+            }
         ]
     },
     {
@@ -67,17 +67,17 @@ const availableProcesses = [
         active: false,
         processQueues: [
             {
-                name: 'Payment',
-                 id: 1
+                id: 1,
+                name: 'Payment' 
             },
             {
-                name: 'Assessment',
-                 id: 2
+                id: 2,
+                name: 'Assessment'
             },
             {
-                name: 'Nephrology clinic',
-                 id: 6
-            },
+                id: 7,
+                name: 'Nephrology clinic'
+            }
         ]
     },
     {
@@ -87,17 +87,17 @@ const availableProcesses = [
         active: false,
         processQueues: [
             {
-                name: 'Payment',
-                 id: 1
+                id: 1,
+                name: 'Payment' 
             },
             {
-                name: 'Assessment',
-                 id: 2
+                id: 2,
+                name: 'Assessment'
             },
             {
-                name: 'Obstetrics & Gynecology clinic',
-                 id: 7
-            },
+                id: 8,
+                name: 'Obstetrics & Gynecology clinic'
+            }
         ]
     }
 ];
@@ -121,7 +121,7 @@ const processReducer = (state = availableProcesses, action) => {
         case 'MODIFY': {
             state[action.id].name = action.payload
             state[action.id].processQueues = action.data
-            return state;
+            return [...state];
         }    
         default:
             return state;
