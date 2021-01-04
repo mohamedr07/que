@@ -19,11 +19,11 @@ export default function AddProcess() {
             },
             {
                 name: 'Clinic',
-                id: 8,
+                id: 3,
             },
             {
                 name: 'Another Clinic',
-                id: 9,
+                id: 10,
             }
     ]);
     const [selectedQueues, setSelectedQueues] = useState([])

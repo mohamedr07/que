@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { editProcess, addQueue } from "../../actions"
+import { editProcess, addQueue, deleteQueue } from "../../actions"
 import {  useDispatch, useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
 
@@ -7,9 +7,6 @@ export default function EditProcess({match}) {
 
     useEffect(() => {
         addAvailableQueues()
-        return () => {
-            resetAvailableQueues()
-        }
     }, [])
 
     const editedProcessIndex  = match.params.index
@@ -18,29 +15,20 @@ export default function EditProcess({match}) {
     const [processName, setProcessName] = useState(useSelector(state => state.processReducer[editedProcessIndex].name))
     const [selectedId, setSelectedId] = useState(0)
     const allAvailableQueues =  useSelector(state => state.queuesReducer)
-    const removedQueues = [];
     const [availableQueues, setAvailableQueues] = useState([])
 
     const addAvailableQueues = () => {
-        const queues = allAvailableQueues
-        selectedQueues.map(q => {
-            const index = queues.findIndex(que => que.id === parseInt(q.id))
-            if(index != -1) {
-                removedQueues.push(queues[index])
-                queues.splice(index, 1)
-            } 
-            
+
+        const queues = []
+        allAvailableQueues.map(q => {
+            const index = selectedQueues.findIndex(que => que.id === parseInt(q.id))
+            if(index == -1) {
+                queues.push(q)
+            }
         })
         setAvailableQueues(queues)
     }
 
-    const resetAvailableQueues = () => {
-        removedQueues.map(q => {
-            dispatch(addQueue(q))
-        })
-
-        removedQueues.splice(0, removedQueues.length)
-    }
     const handleSelectChange = (e) => {
         setSelectedId(e.target.value);
     }
@@ -55,12 +43,16 @@ export default function EditProcess({match}) {
         setSelectedQueues([...selectedQueues, availableQueues[selectedQueIndex]])
         availableQueues.splice(selectedQueIndex, 1)
         setSelectedId(0)
+        console.log(allAvailableQueues)
+        console.log(availableQueues)
     }
 
     const deleteQueueFromSelected = (id) => {
         const deletedQueIndex = selectedQueues.findIndex(queue => queue.id === parseInt(id))
         setAvailableQueues([...availableQueues, selectedQueues[deletedQueIndex]])
         selectedQueues.splice(deletedQueIndex, 1)
+        console.log(allAvailableQueues)
+        console.log(availableQueues)
     }
 
    

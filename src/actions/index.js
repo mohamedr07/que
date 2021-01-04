@@ -36,3 +36,10 @@ export const addQueue = (q) => {
     }
 }
 
+export const deleteQueue = (index) => {
+    return {
+        type: 'DELETE_QUEUE',
+        payload: index
+    }
+}
+
