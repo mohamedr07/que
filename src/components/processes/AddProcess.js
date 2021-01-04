@@ -1,32 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { addProcess } from "../../actions"
-import {  useDispatch } from "react-redux"
+import {  useDispatch, useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
 
 export default function AddProcess() {
 
+    useEffect(() => {
+        addAvailableQueues()
+    }, [])
+
     const dispatch = useDispatch();
     const [processName, setProcessName] = useState('')
     const [selectedId, setSelectedId] = useState(0)
-    const [availableQueues, setAvailableQueues] =  useState([
-            {
-                name: 'Payment',
-                id: 1,
-            },
-            {
-                name: 'Assessment',
-                id: 2,
-            },
-            {
-                name: 'Clinic',
-                id: 3,
-            },
-            {
-                name: 'Another Clinic',
-                id: 10,
-            }
-    ]);
     const [selectedQueues, setSelectedQueues] = useState([])
+    const allAvailableQueues =  useSelector(state => state.queuesReducer)
+    const [availableQueues, setAvailableQueues] = useState([])
+
+    const addAvailableQueues = () => {
+
+        const queues = []
+        allAvailableQueues.map(q => {
+            queues.push(q)
+        })
+        setAvailableQueues(queues)
+    }
 
     const handleSelectChange = (e) => {
         setSelectedId(e.target.value);

@@ -10,26 +10,26 @@ export class Providers extends Component {
 
         return (
             <div className="container">
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                        <h1 class="display-4">Providers</h1>
-                        <p class="lead">a description about Providers</p>
+                <div className="jumbotron jumbotron-fluid">
+                    <div className="container">
+                        <h1 className="display-4">Providers</h1>
+                        <p className="lead">a description about Providers</p>
                     </div>
                 </div>          
                 <br/><br/>    
                 <div className="row">
-                    {ProvidersItems.map(providerItem => (
-                    <div class="col-xl-4 col-lg-6 col-md-6">
+                    {ProvidersItems.map((providerItem, index) => (
+                    <div key={index} className="col-xl-4 col-lg-6 col-md-6">
                         <div className="card-container">
-                            <div class="card">
+                            <div className="card">
                                 <div className="box">
-                                    <div class="v-menu-btn dropdown">
-                                        <button class="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical v-menu-icon"></i> 
+                                    <div className="v-menu-btn dropdown">
+                                        <button className="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i className="bi bi-three-dots-vertical v-menu-icon"></i> 
                                         </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a className="dropdown-item" href="#">Edit</a></li>
+                                            <li><a className="dropdown-item" href="#">Delete</a></li>
                                         </ul>
                                     </div>
                                     <div className="content">
@@ -47,7 +47,7 @@ export class Providers extends Component {
                     </div> 
                     ))}
                 </div>
-                <Link to="/assignprovider" class="btn btn-primary btn-add">Add</Link>
+                <Link to="/assignprovider" className="btn btn-primary btn-add">Add</Link>
             </div>
         );
     }

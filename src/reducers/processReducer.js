@@ -103,7 +103,7 @@ const availableProcesses = [
 ];
 const processReducer = (state = availableProcesses, action) => {
     switch(action.type){
-        case 'ADD': {
+        case 'ADD_PROCESS': {
             let newProcess = {
                 id: 6,
                 name: action.payload,
@@ -114,11 +114,11 @@ const processReducer = (state = availableProcesses, action) => {
             return [...state, newProcess]
 
         }
-        case 'DELETE': {
+        case 'DELETE_PROCESS': {
             state.splice(action.data, 1);
             return [...state];
         }
-        case 'MODIFY': {
+        case 'MODIFY_PROCESS': {
             state[action.id].name = action.payload
             state[action.id].processQueues = action.data
             return [...state];

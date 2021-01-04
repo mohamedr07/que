@@ -14,14 +14,13 @@ export class Home extends Component {
                     <br/><br/> */}
 
                     <div className="row d-flex align-items-center min-vh-50">
-                        <div class="col-12">
+                        <div className="col-12">
                             <div className="card card-signin">
                                 <div className="card-body">
                                     <div className="row">
-
-                                        <form class="form-signin col-lg-6 col-md-12">
-                                            <div class="card">
-                                                <div class="card-body">
+                                        <form className="form-signin col-lg-6 col-md-12">
+                                            <div className="card">
+                                                <div className="card-body">
                                                     <div className="align-left-h">
                                                         <label id="l1" className="p-1 txt-dec-bold">Name:</label>
                                                         <label id="l2" className="p-1 txt-dec">Mohamed Rashad</label>
@@ -53,38 +52,38 @@ export class Home extends Component {
                                         <div className="container container-2 row ">
                                             <h2 className="align-left-h">Listed Queues</h2>
                                             <div className="container d-flex justify-content-center align-items-center">
-                                                <div class="progresses">
-                                                    <div class="steps"> <span><i class="bi bi-check"></i></span> </div> <span class="line"></span>
-                                                    <div class="steps"> <span><i class="bi bi-check"></i></span> </div> <span class="line"></span>
-                                                    <div class="steps"> <span class="font-weight-bold">03</span> </div>
+                                                <div className="progresses">
+                                                    <div className="steps"> <span><i className="bi bi-check"></i></span> </div> <span className="line"></span>
+                                                    <div className="steps"> <span><i className="bi bi-check"></i></span> </div> <span className="line"></span>
+                                                    <div className="steps"> <span className="font-weight-bold">03</span> </div>
                                                 </div>
                                             </div>
                                             <div className="col-lg-4 col-md-12">
-                                                <div class="card">
-                                                    <div class="card-body">
+                                                <div className="card">
+                                                    <div className="card-body">
                                                         <h2 className="card-number">01</h2>
-                                                        <h5 class="card-title">Payment</h5>
-                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                        <h5 className="card-title">Payment</h5>
+                                                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                         
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-lg-4 col-md-12">
-                                                <div class="card">
-                                                    <div class="card-body">
+                                                <div className="card">
+                                                    <div className="card-body">
                                                         <h2 className="card-number">02</h2>
-                                                        <h5 class="card-title">Assessment</h5>
-                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                        <h5 className="card-title">Assessment</h5>
+                                                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                         
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-lg-4 col-md-12">
-                                                <div class="card">
-                                                    <div class="card-body">
+                                                <div className="card">
+                                                    <div className="card-body">
                                                         <h2 className="card-number">03</h2>
-                                                        <h5 class="card-title">Dentist clinic</h5>
-                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                        <h5 className="card-title">Dentist clinic</h5>
+                                                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                         
                                                     </div>
                                                 </div>

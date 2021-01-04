@@ -30,7 +30,6 @@ function Processes() {
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li>
                                             <Link to= {`/editprocess/${index}`} onClick = {() => {
-                                            dispatch(selectProcess(index))
                                             }} className="dropdown-item" href="#">Edit</Link>
                                         </li>
                                         <li><a onClick = {() => dispatch(deleteProcess(index))} className="dropdown-item" href="#">Delete</a></li>

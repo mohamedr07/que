@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { editProcess, addQueue, deleteQueue } from "../../actions"
+import { editProcess } from "../../actions"
 import {  useDispatch, useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
 

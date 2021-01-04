@@ -4,15 +4,11 @@ import LoginView from './components/LoginView';
 import RegisterView from './components/RegisterView';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import AdminProviderView from './components/AdminProviderView';
-import AdminProviderEditView from './components/AdminProviderEditView';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Processes from './components/processes/Processes';
-import CardTest from './components/CardTest';
 import Providers from './components/providers/Providers'
 import Stations from './components/stations/Stations'
 import Queues from './components/queues/Queues'
-import CreateProvider from "./components/providers/CreateProviderView";
 import CreateStation from "./components/stations/CreateStationView";
 import CreateQueue from "./components/queues/CreateQueueView";
 import ProviderHome from './components/ProviderHome'
@@ -42,18 +38,9 @@ function App() {
               <Route path="/admin" exact>
                 <AdminView />
               </Route>
-              <Route path="/admin/providers/edit">
-                <AdminProviderEditView />
-              </Route>
-              <Route path="/admin/providers">
-                <AdminProviderView />
-              </Route>
 
               <Route path="/processes">
                 <Processes />
-              </Route>
-              <Route path="/card">
-                <CardTest />
               </Route>
               <Route path="/login">
                 <LoginView />
@@ -67,9 +54,6 @@ function App() {
               <Route path="/assignprovider">
                 <AssignProvider />
               </Route>
-
-              <Route path="/createprovider" component={CreateProvider} />
-
               <Route path="/stations">
                 <Stations />
               </Route>

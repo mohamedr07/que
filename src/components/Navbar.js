@@ -9,7 +9,7 @@ export class Navbar extends Component {
 
                 <nav className="navbar navbar-expand-sm navbar-grey">
                     <div className="container">
-                        <Link to="/"><img className="navbar-brand" src={qImage}/></Link>
+                        <Link to="/"><img className="navbar-brand" src={qImage} alt="Q"/></Link>
                         
                         <button className="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon "></span>

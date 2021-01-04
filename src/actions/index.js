@@ -1,6 +1,9 @@
+
+// ............... PROCESSES .................
+
 export const addProcess = (name, queues) => {
     return {
-        type: 'ADD',
+        type: 'ADD_PROCESS',
         payload: name,
         data: queues
     }
@@ -8,26 +11,21 @@ export const addProcess = (name, queues) => {
 
 export const editProcess = (id, name, queues) => {
     return {
-        type: 'MODIFY',
+        type: 'MODIFY_PROCESS',
         id: id,
         payload: name,
         data: queues
     }
 }
 
-export const selectProcess = (id) => {
-    return {
-        type: 'SELECT',
-        payload: id
-    }
-}
-
 export const deleteProcess = (processNumber) => {
     return {
-        type: 'DELETE',
+        type: 'DELETE_PROCESS',
         data: processNumber
     }
 }
+
+// ................. QUEUES .....................
 
 export const addQueue = (q) => {
     return {

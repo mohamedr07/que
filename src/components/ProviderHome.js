@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import QueueUsers from './QueueUsers'
 
-function ProviderHome(props) {
+function ProviderHome() {
 
     const [showUsers, setShowUsers] = React.useState(false)
     const onClick = () => {
@@ -13,13 +13,13 @@ function ProviderHome(props) {
                 <br/><br/>
 
                 <div className="row d-flex align-items-center min-vh-50">
-                    <div class="col-12">
+                    <div className="col-12">
                         <div className="card card-signin">
                             <div className="card-body">
                                 <div className="row">
-                                    <form class="form-signin col-lg-6 col-md-12">
-                                        <div class="card">
-                                            <div class="card-body">
+                                    <form className="form-signin col-lg-6 col-md-12">
+                                        <div className="card">
+                                            <div className="card-body">
                                                 <div className="align-left-h">
                                                     <label id="l1" className="p-1 txt-dec-bold">Name:</label>
                                                     <label id="l2" className="p-1 txt-dec">Mohamed Rashad</label>
