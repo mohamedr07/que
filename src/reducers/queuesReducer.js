@@ -1,39 +1,57 @@
 const availableQueues = [
     {
         id: 1,
-        name: 'Payment'
+        name: 'Payment',
+        estimatedTime: 7.03,
+        providers: [
+            {
+                id: 1,
+                name: 'Ahmed'
+            }
+        ]
     }, 
     {
         id: 2,
-        name: 'Assessment'
+        name: 'Assessment',
+        estimatedTime: 3.68,
+        providers: [
+            {
+                id: 2,
+                name: 'Mohamed'
+            }
+        ]
     }, 
     {
         id: 3,
-        name: 'Clinic'
+        name: 'Clinic',
+        estimatedTime: 3.12,
+        providers: [
+            {
+                id: 3,
+                name: 'Abbas'
+            }
+        ]
     }, 
     {
         id: 4,
-        name: 'Dentistry Clinic'
+        name: 'Dentistry Clinic',
+        estimatedTime: 4.30,
     }, 
     {
         id: 5,
-        name: 'Surgery Clinic'
+        name: 'Surgery Clinic',
+        estimatedTime: 3.12,
     },
     {
         id: 6,
-        name: 'Orthopedic Clinic'
-    },
-    {
-        id: 7,
-        name: 'Nephrology Clinic'
-    },
-    {
-        id: 8,
-        name: 'Obstetrics & Gynecology Clinic'
-    },
-    {
-        id: 9,
-        name: 'Eyes Clinic'
+        name: 'Eyes Clinic',
+        estimatedTime: 1.12,
+        providers: [
+            {
+                id: 4,
+                name: 'Gaber'
+            }
+        ]
     }
 ];
 
@@ -43,6 +61,11 @@ const queuesReducer = (state = availableQueues, action) => {
         case 'ADD_QUEUE': {
             return [...state,action.payload];
         }
+        case 'MODIFY_QUEUE': {
+            state[action.payload.index].name = action.payload.name;
+            state[action.payload.index].estimatedTime = action.payload.estimatedTime;
+            return [...state];
+        }    
         case 'DELETE_QUEUE': {
             state.splice(action.payload, 1);
             return [...state];

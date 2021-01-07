@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import {  useDispatch, useSelector } from "react-redux"
-import { addQueue } from "../../actions"
+import { editQueue } from "../../actions"
 import { Link } from 'react-router-dom'
 
 
-export default function CreateQueue() {
+export default function EditQueue({match}) {
 
+    const editedQueueIndex  = match.params.index
     const dispatch = useDispatch();
-    const availableQueues = useSelector(state => state.queuesReducer)
-    const [queueName, setQueueName] = useState('')
-    const [estimatedTime, setEstimatedTime] = useState(null)
+    const [queueName, setQueueName] = useState(useSelector(state => state.queuesReducer[editedQueueIndex].name))
+    const [estimatedTime, setEstimatedTime] = useState(useSelector(state => state.queuesReducer[editedQueueIndex].estimatedTime))
 
     const handleNameChange = (e) => {
         setQueueName(e.target.value);
@@ -34,10 +34,9 @@ export default function CreateQueue() {
                 <div className="card card-signin my-5">
                     <div className="card-body">
                         <form className="form-signin">
-                            <input value= {queueName} onChange={handleNameChange} type="text" id="TextField" className="form-control btn-shape mt-2" placeholder="Queue name" required autoFocus />
-                            <input value={estimatedTime} onChange={handleEstimatedTimeChange} type="number" id="TextField2" className="form-control btn-shape mt-2" placeholder="Estimated time" />
-                            
-                            <Link to="/queues" onClick = {() => dispatch(addQueue(availableQueues.length, queueName, estimatedTime))} className="btn btn-primary btn-shape ">Submit</Link>
+                            <input value={queueName} onChange={handleNameChange} type="text" id="TextField" className="form-control btn-shape" placeholder="Queue name" required autoFocus />
+                            <input value={estimatedTime} onChange={handleEstimatedTimeChange} type="number" step="0.25" id="TextField2" className="form-control btn-shape" placeholder="Estimated time" />
+                            <Link to="/queues" onClick = {() => dispatch(editQueue(editedQueueIndex, queueName, estimatedTime))} className="btn btn-primary btn-shape ">Submit</Link>
                         </form>
                     </div>
                 </div>

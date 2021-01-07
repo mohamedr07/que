@@ -105,22 +105,22 @@ const processReducer = (state = availableProcesses, action) => {
     switch(action.type){
         case 'ADD_PROCESS': {
             let newProcess = {
-                id: 6,
-                name: action.payload,
+                id: action.payload.id,
+                name: action.payload.name,
                 image: clinicImage,
                 active: false,
-                processQueues: action.data
+                processQueues: action.payload.queues
             }
             return [...state, newProcess]
 
         }
         case 'DELETE_PROCESS': {
-            state.splice(action.data, 1);
+            state.splice(action.payload, 1);
             return [...state];
         }
         case 'MODIFY_PROCESS': {
-            state[action.id].name = action.payload
-            state[action.id].processQueues = action.data
+            state[action.payload.index].name = action.payload.name
+            state[action.payload.index].processQueues = action.payload.queues
             return [...state];
         }    
         default:

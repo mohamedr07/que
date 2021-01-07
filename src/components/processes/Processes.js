@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux"
-import {  deleteProcess, selectProcess } from "../../actions" 
+import {  deleteProcess } from "../../actions" 
 
 
 function Processes() {
 
     const processesItems =  useSelector(state => state.processReducer)
     const dispatch = useDispatch();
+    
     return (
         <div className="container">
             <div className="jumbotron jumbotron-fluid">
@@ -28,10 +29,7 @@ function Processes() {
                                         <i className="bi bi-three-dots-vertical v-menu-icon"></i> 
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li>
-                                            <Link to= {`/editprocess/${index}`} onClick = {() => {
-                                            }} className="dropdown-item" href="#">Edit</Link>
-                                        </li>
+                                        <li><Link to= {`/editprocess/${index}`} className="dropdown-item" href="#">Edit</Link></li>
                                         <li><a onClick = {() => dispatch(deleteProcess(index))} className="dropdown-item" href="#">Delete</a></li>
                                     </ul>
                                 </div>

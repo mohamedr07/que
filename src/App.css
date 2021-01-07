@@ -192,3 +192,7 @@ a {
 .delete-icon {
   font-size: 1.2em !important;
 }
+
+.font-bold {
+  font-weight: bold !important;
+}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function EditProcess({match}) {
 
-    useEffect(() => {
+    useEffect(() => { 
         addAvailableQueues()
     }, [])
 
@@ -70,7 +70,7 @@ export default function EditProcess({match}) {
                         <form className="form-signin">
                             <input className="form-control btn-shape" value={processName} onChange={handleNameChange}type="text" placeholder="ProcessName" />
 
-                            <div className="form-label-group inlining">
+                            <div className="form-label-group">
                                 <div className="row">
                                     <div className="col-8">
                                         <select className="form-select btn-shape" value={selectedId} onChange={handleSelectChange} aria-label="Default select example" >
@@ -83,14 +83,15 @@ export default function EditProcess({match}) {
                                         </select>
                                     </div>
                                     <div className="col-4">
-                                        <button
+                                        <button 
                                             onClick={() => {
                                                 addQueuesToSelected(selectedId);
                                             }}
                                             type="button"
-                                            className="btn btn-primary btn-add btn-shape">Add</button>
+                                            className="btn-primary form-control btn-shape">Add</button>
                                     </div>
                                 </div>
+                                <hr></hr>
                                 <div className="form-label-group">
                                        <ul className="list-unstyled">
                                         {selectedQueues.map(q => {

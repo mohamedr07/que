@@ -16,6 +16,9 @@ import AssignProvider from "./components/providers/AssignProvider";
 import UserProcesses from "./components/UserProcesses"
 import AddProcess from './components/processes/AddProcess';
 import EditProcess from './components/processes/EditProcess';
+import EditQueue from './components/queues/EditQueue'
+import EditProvider from './components/providers/EditProvider'
+import EditStation from './components/stations/EditStation'
 
 function App() {
   return (
@@ -66,7 +69,10 @@ function App() {
                 <AddProcess />
               </Route>
               <Route path="/editprocess/:index" component={EditProcess} />
-              <Route path="/createQueue" component={CreateQueue} />
+              <Route path="/createqueue" component={CreateQueue} />
+              <Route path="/editqueue/:index" component={EditQueue} />
+              <Route path="/editprovider/:index" component={EditProvider} />
+              <Route path="/editstation/:index" component={EditStation} />
 
             </Switch>
           </div>

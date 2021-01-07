@@ -15,6 +15,7 @@ export default function AddProcess() {
     const [selectedQueues, setSelectedQueues] = useState([])
     const allAvailableQueues =  useSelector(state => state.queuesReducer)
     const [availableQueues, setAvailableQueues] = useState([])
+    const processesItems =  useSelector(state => state.processReducer)
 
     const addAvailableQueues = () => {
 
@@ -60,7 +61,7 @@ export default function AddProcess() {
                 <div className="card card-signin my-5">
                     <div className="card-body">
                         <form className="form-signin">
-                            <input className="form-control btn-shape" value={processName} onChange={handleNameChange}type="text" placeholder="ProcessName" />
+                            <input className="form-control btn-shape" value={processName} onChange={handleNameChange} type="text" placeholder="ProcessName" />
 
                             <div className="form-label-group inlining">
                                 <div className="row">
@@ -79,7 +80,7 @@ export default function AddProcess() {
                                                 addQueuesToSelected(selectedId);
                                             }}
                                             type="button"
-                                            className="btn btn-primary btn-add btn-shape">Add</button>
+                                            className="btn-primary form-control btn-shape">Add</button>
                                     </div>
                                 </div>
                                 <div className="form-label-group">
@@ -93,7 +94,7 @@ export default function AddProcess() {
                                        </ul>
                                 </div>
                             </div>
-                            <Link to="/processes" onClick = {() => dispatch(addProcess(processName, selectedQueues))} className="btn btn-primary btn-shape ">Submit</Link>
+                            <Link to="/processes" onClick = {() => dispatch(addProcess(processesItems.length, processName, selectedQueues))} className="btn btn-primary btn-shape ">Submit</Link>
                         </form>
                     </div>
                 </div>

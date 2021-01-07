@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {  useDispatch, useSelector } from "react-redux"
 import {Link} from "react-router-dom";
+import { deleteQueue } from "../../actions"
+
 
 export default function Queues() {
 
-    const [availableQueues, setAvailableQueues] = useState(useSelector(state => state.queuesReducer))
+    const availableQueues = useSelector(state => state.queuesReducer)
+    const dispatch = useDispatch();
     
     return (
         <div className="container">
@@ -16,7 +19,7 @@ export default function Queues() {
             </div>          
             <br/><br/>    
             <div className="row">
-                {availableQueues.map(queue => (
+                {availableQueues.map((queue, index) => (
                 <div key={queue.id} className="col-xl-4 col-lg-6 col-md-6">
                     <div className="card-container">
                         <div className="card">
@@ -26,15 +29,21 @@ export default function Queues() {
                                         <i className="bi bi-three-dots-vertical v-menu-icon"></i> 
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><a className="dropdown-item" href="#">Edit</a></li>
-                                        <li><a className="dropdown-item" href="#">Delete</a></li>
+                                        <li><Link to= {`/editqueue/${index}`} className="dropdown-item" href="#">Edit</Link></li>
+                                        <li><a onClick = {() => dispatch(deleteQueue(index))} className="dropdown-item" href="#">Delete</a></li>
                                     </ul>
                                 </div>
                                 <div className="content">
                                 <h3 className="card-title">{queue.name}</h3>
                                 <div className="card-text">
+                                    <h6 className="mt-3">Estimated time: {queue.estimatedTime} mins</h6>
+                                    <hr></hr>
                                     <ul className="list-unstyled">
-                                        <li><a href="#">Provider 1</a></li>
+                                        {
+                                            queue.providers ? queue.providers.map(p => {
+                                                return <li className="">{p.name}</li>
+                                            }) : null
+                                        }
                                     </ul>
                                 </div>
                                 </div>
@@ -44,7 +53,7 @@ export default function Queues() {
                 </div> 
                 ))}
             </div>
-            <Link to="createQueue" className="btn btn-primary btn-add">Add</Link>
+            <Link to="createqueue" className="btn btn-primary btn-add">Add</Link>
         </div>
     );
 }
