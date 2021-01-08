@@ -39,12 +39,13 @@ a {
   box-shadow: 0 0 20px 0 rgba(100, 100, 100, 0.26) !important;
   margin: 10px !important;
   padding: 5px;
-  cursor: pointer;
+  
 }
 
 .card-user {
   margin: 30px 10px !important;
   min-height: 435px ;
+  cursor: pointer;
 }
 
 .card-img-top {
@@ -195,4 +196,78 @@ a {
 
 .font-bold {
   font-weight: bold !important;
+}
+
+ .form-link a{
+  color: #000000 !important;
+  text-decoration: underline;
+  margin-left: 21px;
+}
+
+ 
+.card-user-2 {
+  margin: auto !important;
+  padding-right: 1px !important;
+  padding-left: 1px !important;
+  height: 50px;
+  min-height: 100px !important;
+}
+
+
+.card-user-2 .card-title {
+  font-size: 1.2em !important;
+  color: #006F67;
+}
+
+
+.hori-timeline .events {
+  border-top: 3px solid rgba(0, 111, 103, 0.3);
+}
+
+.hori-timeline .events .event-list {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-top: 70px;
+  margin-right: 0;
+}
+.hori-timeline .events .event-list:before {
+  content: "";
+  position: absolute;
+  height: 60px;
+  border-right: 2px dashed rgba(0, 111, 103, 0.3);
+  top: 0;
+}
+.hori-timeline .events .event-list .event-date {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  right: 0;
+  width: 75px;
+  margin: 0 auto;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+@media (min-width: 1140px) {
+  .hori-timeline .events .event-list {
+      display: inline-block;
+      width: 24%;
+      padding-top: 45px;
+  }
+  .hori-timeline .events .event-list .event-date {
+      top: -12px;
+  }
+}
+@media (max-width: 1140px) {
+  .hori-timeline .events-2 {
+    border: none !important;
+  }
+}
+
+.que-completed {
+  box-shadow: none !important;
+}
+
+.que-completed .card-title {
+  color : rgba(0, 111, 103, 0.3);
 }

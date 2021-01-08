@@ -26,13 +26,15 @@ export class LoginView extends Component {
                                         <div className="custom-control custom-checkbox mb-2">
                                             <input type="checkbox" className="custom-control-input btn-shape" id="customCheck1" />
                                             <label className="custom-control-label" htmlFor="customCheck1">Stay signed in</label>
-                                            <input type="checkbox" className="custom-control-input btn-shape" id="customCheck2" />
-                                            <label className="custom-control-label" htmlFor="customCheck1">Sign in as provider</label>
                                         </div>
-                                        <a href="#">Forget password</a>
+                                        <div className="custom-control custom-checkbox mb-2">
+                                            <input type="checkbox" className="custom-control-input btn-shape" id="customCheck2" />
+                                            <label className="custom-control-label" htmlFor="customCheck2">Sign in as provider</label>
+                                        </div>
+                                        <div className="form-link"><a href="#">Forget password</a></div>
                                         <br/>
-                                        <button className="btn btn-primary btn-block text-uppercase mt-2 btn-shape" type="submit">Sign in</button>
-                                        <Link to="/Register" className="btn btn-lg btn-primary btn-block text-uppercase mt-2 btn-shape">Sign up</Link>
+                                        <button className="btn btn-primary btn-block text-uppercase btn-shape" type="submit">Sign in</button>
+                                        <Link to="/Register" className=" btn btn-primary btn-block text-uppercase btn-shape">Sign up</Link>
                                         <hr className="my-4" />
                                         <button className="btn btn-google btn-block text-uppercase btn-shape" type="submit"><i className="bi bi-google mr-2"></i> Google</button>
                                         <button className="btn btn-facebook btn-block text-uppercase btn-shape" type="submit"><i className="bi bi-facebook mr-2"></i> Facebook</button>
