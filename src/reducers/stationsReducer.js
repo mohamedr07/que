@@ -3,25 +3,29 @@ const availableStations = [
         id: 1,
         location: 'BLA',
         queue: 'Payment',
-        provider: 'Ahmed'
+        provider: 'Ahmed',
+        currentlyServing: 2,
     },
     {
         id: 2,
         location: 'BLA 2',
         queue: 'Assessment',
-        provider: 'Mohamed'
+        provider: 'Mohamed',
+        currentlyServing: 429,
     },
     {
         id: 3,
         location: 'BLA 3',
         queue: 'Clinic',
-        provider: 'Abbas'
+        provider: 'Abbas',
+        currentlyServing: 16,
     },
     {
         id: 4,
         location: 'BLA 4',
         queue: 'Eyes Clinic',
-        provider: 'Gaber'
+        provider: 'Gaber',
+        currentlyServing: 89,
     }
     
 ];

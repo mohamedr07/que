@@ -19,6 +19,7 @@ import EditProcess from './components/processes/EditProcess';
 import EditQueue from './components/queues/EditQueue'
 import EditProvider from './components/providers/EditProvider'
 import EditStation from './components/stations/EditStation'
+import Screen from "./components/Screen"
 
 function App() {
   return (
@@ -73,7 +74,7 @@ function App() {
               <Route path="/editqueue/:index" component={EditQueue} />
               <Route path="/editprovider/:index" component={EditProvider} />
               <Route path="/editstation/:index" component={EditStation} />
-
+              <Route path="/screen" component={Screen} />
             </Switch>
           </div>
         </section>

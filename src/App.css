@@ -209,8 +209,7 @@ a {
   margin: auto !important;
   padding-right: 1px !important;
   padding-left: 1px !important;
-  height: 50px;
-  min-height: 100px !important;
+  height: 100px;
 }
 
 
@@ -270,4 +269,8 @@ a {
 
 .que-completed .card-title {
   color : rgba(0, 111, 103, 0.3);
+}
+
+.screen-card-body {
+  height: 170px;
 }
