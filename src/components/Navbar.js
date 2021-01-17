@@ -29,6 +29,9 @@ export class Navbar extends Component {
                                 <li className="nav-item">
                                     <Link to="/login" className="nav-link navbar-text">Login</Link>
                                 </li>
+                                <li className="nav-item">
+                                    <Link to="/logout" className="nav-link navbar-text">Logout</Link>
+                                </li>
                             </ul>
                         </div>
                     </div>

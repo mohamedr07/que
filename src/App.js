@@ -1,6 +1,7 @@
 import './App.css';
 import AdminView from './components/AdminView';
 import LoginView from './components/LoginView';
+import Logout from './components/Logout'
 import RegisterView from './components/RegisterView';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -48,6 +49,9 @@ function App() {
               </Route>
               <Route path="/login">
                 <LoginView />
+              </Route>
+              <Route path="/logout">
+                <Logout />
               </Route>
               <Route path="/register">
                 <RegisterView />
