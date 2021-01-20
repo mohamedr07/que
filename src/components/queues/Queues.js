@@ -1,13 +1,26 @@
-import React from 'react'
-import {  useDispatch, useSelector } from "react-redux"
+import React, { useEffect, useState } from 'react'
+import {  useSelector } from "react-redux"
 import {Link} from "react-router-dom";
-import { deleteQueue } from "../../actions"
+import axiosInstance from '../Axios';
 
 
 export default function Queues() {
 
-    const availableQueues = useSelector(state => state.queuesReducer)
-    const dispatch = useDispatch();
+    const [availableQueues, setAvailableQueues] = useState(useSelector(state => state.queuesReducer))
+
+    useEffect(() => {
+        axiosInstance.get(`queues/`).then(res => {
+            setAvailableQueues(res.data)
+            console.log(res)
+        })
+    }, [])
+
+    function handleDeleteQueue(id) {
+        axiosInstance.delete(`queues/${id}`).then(() => {
+            window.location.reload(false)
+            console.log("deleted")
+        })
+    }
     
     return (
         <div className="container">
@@ -19,7 +32,7 @@ export default function Queues() {
             </div>          
             <br/><br/>    
             <div className="row">
-                {availableQueues.map((queue, index) => (
+                {availableQueues ? availableQueues.map((queue, index) => (
                 <div key={queue.id} className="col-xl-4 col-lg-6 col-md-6">
                     <div className="card-container">
                         <div className="card">
@@ -29,19 +42,19 @@ export default function Queues() {
                                         <i className="bi bi-three-dots-vertical v-menu-icon"></i> 
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><Link to= {`/editqueue/${index}`} className="dropdown-item" href="#">Edit</Link></li>
-                                        <li><a onClick = {() => dispatch(deleteQueue(index))} className="dropdown-item" href="#">Delete</a></li>
+                                        <li><Link to= {`/editqueue/${queue.id}`} className="dropdown-item" href="#">Edit</Link></li>
+                                        <li><a href= "/queues" onClick={() => handleDeleteQueue(queue.id)} className="dropdown-item" href="#">Delete</a></li>
                                     </ul>
                                 </div>
                                 <div className="content">
                                 <h3 className="card-title">{queue.name}</h3>
                                 <div className="card-text">
-                                    <h6 className="mt-3">Estimated time: {queue.estimatedTime} mins</h6>
+                                    <h6 className="mt-3">Estimated time: {queue.estimated_time} mins</h6>
                                     <hr></hr>
                                     <ul className="list-unstyled">
                                         {
-                                            queue.providers ? queue.providers.map(p => {
-                                                return <li className="">{p.name}</li>
+                                            queue.providers ? queue.providers.map((p, index) => {
+                                                return <li key={index}>{p.name}</li>
                                             }) : null
                                         }
                                     </ul>
@@ -51,7 +64,7 @@ export default function Queues() {
                         </div>
                     </div>
                 </div> 
-                ))}
+                )) : null }
             </div>
             <Link to="createqueue" className="btn btn-primary btn-add">Add</Link>
         </div>

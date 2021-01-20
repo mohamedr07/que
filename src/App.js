@@ -75,7 +75,7 @@ function App() {
               </Route>
               <Route path="/editprocess/:index" component={EditProcess} />
               <Route path="/createqueue" component={CreateQueue} />
-              <Route path="/editqueue/:index" component={EditQueue} />
+              <Route path="/editqueue/:id" component={EditQueue} />
               <Route path="/editprovider/:index" component={EditProvider} />
               <Route path="/editstation/:index" component={EditStation} />
               <Route path="/screen" component={Screen} />

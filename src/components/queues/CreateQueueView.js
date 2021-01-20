@@ -1,28 +1,35 @@
 import React, { useState } from 'react'
-import {  useDispatch, useSelector } from "react-redux"
-import { addQueue } from "../../actions"
 import { Link } from 'react-router-dom'
-
+import axiosInstance from '../Axios'
 
 export default function CreateQueue() {
 
-    const dispatch = useDispatch();
-    const availableQueues = useSelector(state => state.queuesReducer)
-    const [queueName, setQueueName] = useState('')
-    const [estimatedTime, setEstimatedTime] = useState(null)
+    const initialFormData = Object.freeze({
+        name: '',
+        estimated_time: ''
+    })
+    const [formData, updateFormData] = useState(initialFormData)
 
-    const handleNameChange = (e) => {
-        setQueueName(e.target.value);
+    const handleChange = (e) => {
+        updateFormData({
+            ...formData,
+            [e.target.name]: e.target.value.trim()
+        })
     }
 
-    const handleEstimatedTimeChange = (e) => {
-        setEstimatedTime(e.target.value);
+    const handleSubmit = () => {
+        axiosInstance.post(`queues/`, {
+            name: formData.name,
+            estimated_time: formData.estimated_time
+        })
+        .then((res) => {
+            console.log(res)
+            console.log(res.data)
+        })
     }
 
 
     return (
-
-
         <div className="container">
             <div className="jumbotron jumbotron-fluid">
                 <div className="container">
@@ -34,10 +41,10 @@ export default function CreateQueue() {
                 <div className="card card-signin my-5">
                     <div className="card-body">
                         <form className="form-signin">
-                            <input value= {queueName} onChange={handleNameChange} type="text" id="TextField" className="form-control btn-shape mt-2" placeholder="Queue name" required autoFocus />
-                            <input value={estimatedTime} onChange={handleEstimatedTimeChange} type="number" id="TextField2" className="form-control btn-shape mt-2" placeholder="Estimated time" />
+                            <input name="name" onChange={handleChange} type="text" id="TextField" className="form-control btn-shape mt-2" placeholder="Queue name" required autoFocus />
+                            <input name="estimated_time" onChange={handleChange} type="number" id="TextField2" className="form-control btn-shape mt-2" placeholder="Estimated time" />
                             
-                            <Link to="/queues" onClick = {() => dispatch(addQueue(availableQueues.length, queueName, estimatedTime))} className="btn btn-primary btn-shape ">Submit</Link>
+                            <a href="/queues" onClick = {handleSubmit} className="btn btn-primary btn-shape ">Submit</a>
                         </form>
                     </div>
                 </div>
