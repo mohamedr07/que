@@ -73,7 +73,7 @@ function App() {
               <Route path="/addprocess">
                 <AddProcess />
               </Route>
-              <Route path="/editprocess/:index" component={EditProcess} />
+              <Route path="/editprocess/:id" component={EditProcess} />
               <Route path="/createqueue" component={CreateQueue} />
               <Route path="/editqueue/:id" component={EditQueue} />
               <Route path="/editprovider/:index" component={EditProvider} />

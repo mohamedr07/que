@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import {  deleteProcess } from "../../actions" 
+import axiosInstance from '../Axios';
 
 
 function Processes() {
 
-    const processesItems =  useSelector(state => state.processReducer)
-    const dispatch = useDispatch();
+    const [processesItems, setProcessesItems] =  useState(useSelector(state => state.processReducer))
+    
+    useEffect(() => {
+        axiosInstance.get(`processes/`).then(res => {
+            setProcessesItems(res.data)
+        })
+    }, [])
+
+    function deleteProcessQueue(id) {
+        axiosInstance.delete(`processes/${id}`).then(() => {
+            window.location.reload(false)
+            console.log("deleted")
+        })
+    }
     
     return (
         <div className="container">
@@ -29,15 +42,16 @@ function Processes() {
                                         <i className="bi bi-three-dots-vertical v-menu-icon"></i> 
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><Link to= {`/editprocess/${index}`} className="dropdown-item" href="#">Edit</Link></li>
-                                        <li><a onClick = {() => dispatch(deleteProcess(index))} className="dropdown-item" href="#">Delete</a></li>
+                                        <li><Link to= {`/editprocess/${processItem.id}`} className="dropdown-item" href="#">Edit</Link></li>
+                                        <li><a onClick = {() => deleteProcessQueue(processItem.id)} className="dropdown-item" href="#">Delete</a></li>
                                     </ul>
                                 </div>
                                 <div className="content">
                                     <h3 className="card-title">{processItem.name}</h3>
+                                    <hr></hr>
                                     <div className="card-text">
                                         <ul className="list-unstyled">
-                                            {processItem.processQueues ? processItem.processQueues.map((q, i) => {
+                                            {processItem.queues ? processItem.queues.map((q, i) => {
                                                 return <li key={i}>{q.name}</li>
                                             }): null}   
                                         </ul>

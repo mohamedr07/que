@@ -31,6 +31,7 @@ export default function LoginView() {
             localStorage.setItem('refresh_token', res.data.refresh)
             axiosInstance.defaults.headers['Authorization'] = 'JWT ' + localStorage.getItem('access_token')
             history.push('/')
+            console.log(res.data.access)
         })
     }
 

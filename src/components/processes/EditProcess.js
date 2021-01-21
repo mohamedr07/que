@@ -1,32 +1,50 @@
 import React, { useState, useEffect } from 'react'
-import { editProcess } from "../../actions"
-import {  useDispatch, useSelector } from "react-redux"
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import axiosInstance from '../Axios'
+import axios from 'axios'
 
 export default function EditProcess({match}) {
 
-    useEffect(() => { 
-        addAvailableQueues()
-    }, [])
-
-    const editedProcessIndex  = match.params.index
-    const dispatch = useDispatch();
-    const [selectedQueues, setSelectedQueues] = useState(useSelector(state => state.processReducer[editedProcessIndex].processQueues))
-    const [processName, setProcessName] = useState(useSelector(state => state.processReducer[editedProcessIndex].name))
+    const editedProcessId  = match.params.id
+    const [selectedQueues, setSelectedQueues] = useState([])
+    const [processName, setProcessName] = useState('')
     const [selectedId, setSelectedId] = useState(0)
-    const allAvailableQueues =  useSelector(state => state.queuesReducer)
     const [availableQueues, setAvailableQueues] = useState([])
 
-    const addAvailableQueues = () => {
-
-        const queues = []
-        allAvailableQueues.map(q => {
-            const index = selectedQueues.findIndex(que => que.id === parseInt(q.id))
-            if(index == -1) {
-                queues.push(q)
-            }
+    useEffect(() => { 
+        axios.all([
+            axiosInstance.get(`processes/${editedProcessId}`),
+            axiosInstance.get(`queues/`)
+        ]).then(res => {
+            setProcessName(res[0].data.name)
+            setAvailableQueues(res[1].data)
+            // setSelectedQueues(res[0].data.queues)
+            
+            // console.log(selectedQueues)
+            // res[1].data.map(q => {
+            //     const index = selectedQueues.findIndex(que => que.id === parseInt(q.id))
+            //         if(index == -1) {
+            //             availableQueues.push(q)
+            //         }
+            // })
+            // setAvailableQueues([...availableQueues])
+            // console.log(res[1].data)
+            // console.log(availableQueues)
         })
-        setAvailableQueues(queues)
+    }, [])
+
+    const updateProcess = () => {
+        const ques = []
+        selectedQueues.map(q => {
+            ques.push(q.id)
+        })
+
+        axiosInstance.put(`processes/${editedProcessId}`, {
+            name: processName,
+            queues: ques
+        }).then(() => {
+            console.log("edited")
+        })
     }
 
     const handleSelectChange = (e) => {
@@ -43,16 +61,12 @@ export default function EditProcess({match}) {
         setSelectedQueues([...selectedQueues, availableQueues[selectedQueIndex]])
         availableQueues.splice(selectedQueIndex, 1)
         setSelectedId(0)
-        console.log(allAvailableQueues)
-        console.log(availableQueues)
     }
 
     const deleteQueueFromSelected = (id) => {
         const deletedQueIndex = selectedQueues.findIndex(queue => queue.id === parseInt(id))
         setAvailableQueues([...availableQueues, selectedQueues[deletedQueIndex]])
         selectedQueues.splice(deletedQueIndex, 1)
-        console.log(allAvailableQueues)
-        console.log(availableQueues)
     }
 
    
@@ -104,9 +118,7 @@ export default function EditProcess({match}) {
                                        </ul>
                                 </div>
                             </div>
-                            <Link to="/processes" onClick = {() => {
-                                dispatch(editProcess(editedProcessIndex, processName, selectedQueues))
-                                }} className="btn btn-primary btn-shape ">Submit</Link>
+                            <a href="/processes" onClick = {() => updateProcess() } className="btn btn-primary btn-shape ">Submit</a>
                         </form>
                     </div>
                 </div>

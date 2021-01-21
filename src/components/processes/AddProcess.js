@@ -1,29 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import { addProcess } from "../../actions"
-import {  useDispatch, useSelector } from "react-redux"
-import { Link } from 'react-router-dom'
+import { useSelector } from "react-redux"
+import axiosInstance from '../Axios'
 
 export default function AddProcess() {
 
     useEffect(() => {
-        addAvailableQueues()
+        axiosInstance.get(`queues/`).then(res => {
+            setAvailableQueues(res.data)
+        })
     }, [])
 
-    const dispatch = useDispatch();
     const [processName, setProcessName] = useState('')
     const [selectedId, setSelectedId] = useState(0)
     const [selectedQueues, setSelectedQueues] = useState([])
-    const allAvailableQueues =  useSelector(state => state.queuesReducer)
-    const [availableQueues, setAvailableQueues] = useState([])
-    const processesItems =  useSelector(state => state.processReducer)
+    const [availableQueues, setAvailableQueues] = useState(useSelector(state => state.queuesReducer))
 
-    const addAvailableQueues = () => {
-
-        const queues = []
-        allAvailableQueues.map(q => {
-            queues.push(q)
+    const addProcess = () => {
+        const ques = []
+        selectedQueues.map(q => {
+            ques.push(q.id)
         })
-        setAvailableQueues(queues)
+        
+        axiosInstance.post(`processes/`, {
+            name: processName,
+            queues: ques
+        }).then(() => {
+            console.log("added")
+        })
     }
 
     const handleSelectChange = (e) => {
@@ -67,7 +70,7 @@ export default function AddProcess() {
                                 <div className="row">
                                     <div className="col-8">
                                         <select className="form-select btn-shape" value={selectedId} onChange={handleSelectChange} aria-label="Default select example" >
-                                            <option selected value="0" disabled>Select queues</option>
+                                            <option defaultValue value="0" disabled>Select queues</option>
                                             {availableQueues.map(q => {
                                                 return(<option key={q.id} value={q.id}>{q.name}</option>)
                                             })}
@@ -86,15 +89,16 @@ export default function AddProcess() {
                                 <div className="form-label-group">
                                        <ul className="list-unstyled">
                                         {selectedQueues.map(q => {
-                                        return (<li className="form-control btn-shape d-flex justify-content-between">
+                                        return (
+                                            <li key={q.id} className="form-control btn-shape d-flex justify-content-between">
                                             <label>{q.name}</label>
                                             <i className="bi bi-x delete-icon" onClick={() => deleteQueueFromSelected(q.id)}></i>
-                                        </li>)
-                                        })}
+                                            </li>
+                                        )})}
                                        </ul>
                                 </div>
                             </div>
-                            <Link to="/processes" onClick = {() => dispatch(addProcess(processesItems.length, processName, selectedQueues))} className="btn btn-primary btn-shape ">Submit</Link>
+                            <a href="/processes" onClick = {() => addProcess()} className="btn btn-primary btn-shape ">Submit</a>
                         </form>
                     </div>
                 </div>
