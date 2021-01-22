@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
-import {  useDispatch, useSelector } from "react-redux"
+import React, { useState, useEffect } from 'react'
+import { useSelector } from "react-redux"
 import {Link} from "react-router-dom";
-import { addStation } from "../../actions"
+import axiosInstance from '../Axios'
+import axios from 'axios'
 
 export default function CreateStation() {
 
-    const availableQueues = useSelector(state => state.queuesReducer)
-    const providers = useSelector(state => state.providersReducer)
-    const stations = useSelector(state => state.stationsReducer)
-    const [stationLocation, setStationLocation] = useState([''])
-    const [selectedProvider, setSelectedProvider] = useState([''])
-    const [selectedQueue, setSelectedQueue] = useState([''])
-    const dispatch = useDispatch();
+    const [availableQueues, setAvailableQueues] = useState(useSelector(state => state.queuesReducer))
+    const [providers, setProviders] = useState(useSelector(state => state.providersReducer))
+    const [stationLocation, setStationLocation] = useState('')
+    const [selectedProvider, setSelectedProvider] = useState('')
+    const [selectedQueue, setSelectedQueue] = useState('')
+
+    useEffect(() => {
+        axios.all([
+            axiosInstance.get(`queues`),
+            axiosInstance.get(`users/providers`)
+        ]).then(res => {
+            console.log(res[0].data)
+            console.log(res[1].data)
+            setAvailableQueues(res[0].data)
+            setProviders(res[1].data)
+        })
+    }, [])
 
     const handleStationLocationChange = (e) => {
         setStationLocation(e.target.value);
@@ -25,6 +36,13 @@ export default function CreateStation() {
         setSelectedProvider(e.target.value);
     }
 
+    const handleSubmit = () => {
+        axiosInstance.post(`stations/`, {
+            name: stationLocation,
+            provider: selectedProvider,
+            queue: selectedQueue
+        }).then(console.log("added"))
+    }
 
     return (
         <div className="container">
@@ -46,7 +64,7 @@ export default function CreateStation() {
                                 <select value={selectedQueue} onChange={handleQueueChange} className="form-select btn-shape" aria-label="Default select example">
                                     <option defaultValue>Select queue</option>
                                     {availableQueues.map((queue, index) => (
-                                        <option key={index} value={queue.name}>{queue.name}</option>
+                                        <option key={index} value={queue.id}>{queue.name}</option>
                                     ))}
                                 </select>
                             </div>
@@ -54,11 +72,11 @@ export default function CreateStation() {
                                 <select value={selectedProvider} onChange={handleProviderChange} className="form-select btn-shape" aria-label="Default select example">
                                     <option defaultValue>Select provider</option>
                                     {providers.map((provider, index) => (
-                                        <option key={index} value={provider.name}>{provider.name}</option>
+                                        <option key={index} value={provider.id}>{provider.email}</option>
                                     ))}
                                 </select>
                             </div>
-                            <Link to="/stations" onClick = {() => dispatch(addStation(stations.length, stationLocation, selectedQueue, selectedProvider))} className="btn btn-primary btn-shape ">Submit</Link>
+                            <Link to="/stations" onClick = {handleSubmit} className="btn btn-primary btn-shape ">Submit</Link>
                         </form>
                     </div>
                 </div>

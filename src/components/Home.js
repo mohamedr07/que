@@ -100,7 +100,7 @@ export default function Home () {
                                             }
                                             
                                             </ul>
-                                            <ul className="list-inline events events-2">
+                                            {/* <ul className="list-inline events events-2">
                                             {
                                                 user.queues.map((q, index) => {
                                                     if(index > 3) {
@@ -110,7 +110,7 @@ export default function Home () {
                                                                 
                                                                 <div className={q.completed ? "card mb-0 que-completed" : "card mb-0"}>
                                                                     <div className="card-body card-user-2 ">
-                                                                        {/* <h2 className="card-number mt-2">{index + 1}</h2> */}
+                                                                        <h2 className="card-number mt-2">{index + 1}</h2>
                                                                         <h5 className="card-title "><span>{q.name}</span></h5>
                                                                     </div>
                                                                 </div>
@@ -121,7 +121,7 @@ export default function Home () {
                                                 })
                                             }
                                             
-                                            </ul>
+                                            </ul> */}
                                         </div>
                                     </div>
                                 </div>

@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 import {Link} from "react-router-dom";
-import {  useDispatch, useSelector } from "react-redux"
-import { deleteStation } from "../../actions"
+import { useSelector } from "react-redux"
+import axiosInstance from '../Axios'
 
 export default function Stations() {
 
-    const availableStations = useSelector(state => state.stationsReducer)
-    const dispatch = useDispatch();
+    const [availableStations, setAvailableStations] = useState(useSelector(state => state.stationsReducer))
 
+    useEffect(() => {
+        axiosInstance.get(`stations`).then(res => {
+            setAvailableStations(res.data)
+        })
+    }, [])
     return (
         <div className="container">
             <div className="jumbotron jumbotron-fluid">
@@ -28,18 +32,17 @@ export default function Stations() {
                                         <i className="bi bi-three-dots-vertical v-menu-icon"></i> 
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><Link to= {`/editstation/${index}`} className="dropdown-item" href="#">Edit</Link></li>
-                                        <li><a onClick = {() => dispatch(deleteStation(index))} className="dropdown-item" href="#">Delete</a></li>
+                                        <li><Link to= {`/editstation/${station.id}`} className="dropdown-item" href="#">Edit</Link></li>
+                                        <li><a onClick = {() => null} className="dropdown-item" href="#">Delete</a></li>
                                     </ul>
                                 </div>
                                 <div className="content">
-                                <h3 className="card-title">{station.location}</h3>
+                                <h3 className="card-title">{station.name}</h3>
                                 <div className="card-text">
                                     <h6>Station ID: {station.id}</h6>
                                     <hr></hr>
                                     <ul className="list-unstyled">
-                                        <li>Provider: <span className="font-bold">{station.provider}</span></li>
-                                        <li>Queue: <span className="font-bold">{station.queue}</span></li>
+                                        <li>Provider: <span className="font-bold">{station.provider.email}</span></li>
                                     </ul>
                                 </div>
                                 </div>

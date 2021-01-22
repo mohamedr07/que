@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 export default function EditStation({match}) {
 
-    const editedStationIndex  = match.params.index
+    const editedStationIndex  = match.params.id
     const dispatch = useDispatch();
     
     const availableQueues = useSelector(state => state.queuesReducer)

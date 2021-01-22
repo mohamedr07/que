@@ -18,9 +18,9 @@ import UserProcesses from "./components/UserProcesses"
 import AddProcess from './components/processes/AddProcess';
 import EditProcess from './components/processes/EditProcess';
 import EditQueue from './components/queues/EditQueue'
-import EditProvider from './components/providers/EditProvider'
 import EditStation from './components/stations/EditStation'
 import Screen from "./components/Screen"
+
 
 function App() {
   return (
@@ -76,8 +76,7 @@ function App() {
               <Route path="/editprocess/:id" component={EditProcess} />
               <Route path="/createqueue" component={CreateQueue} />
               <Route path="/editqueue/:id" component={EditQueue} />
-              <Route path="/editprovider/:index" component={EditProvider} />
-              <Route path="/editstation/:index" component={EditStation} />
+              <Route path="/editstation/:id" component={EditStation} />
               <Route path="/screen" component={Screen} />
             </Switch>
           </div>

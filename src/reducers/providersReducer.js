@@ -1,30 +1,4 @@
-const availableProviders = [
-    {
-        id: 1,
-        name: 'Ahmed',
-        station: 'BLA',
-        queue: 'Payment'
-    },
-    {
-        id: 2,
-        name: 'Mohamed',
-        station: 'BLA 2',
-        queue: 'Assessment'
-    },
-    {
-        id: 3,
-        name: 'Abbas',
-        station: 'BLA 3',
-        queue: 'Clinic'
-    },
-    {
-        id: 4,
-        name: 'Gaber',
-        station: 'BLA 4',
-        queue: 'Eyes Clinic'
-    }
-    
-];
+const availableProviders = [];
 
 
 const providersReducer = (state = availableProviders, action) => {

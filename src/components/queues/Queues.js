@@ -14,7 +14,7 @@ export default function Queues() {
             console.log(res)
         })
     }, [])
-
+ 
     function handleDeleteQueue(id) {
         axiosInstance.delete(`queues/${id}`).then(() => {
             window.location.reload(false)

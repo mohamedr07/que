@@ -27,18 +27,6 @@ const user = {
                 completed: false,
                 estimatedTime: 7.30
             },
-            {
-                name: 'Obstetrics & Gynecology clinic',
-                current: false,
-                completed: false,
-                estimatedTime: 8.20
-            },
-            {
-                name: 'Nephrology clinic',
-                current: false,
-                completed: false,
-                estimatedTime: 3.30
-            }
 
         ]
     }

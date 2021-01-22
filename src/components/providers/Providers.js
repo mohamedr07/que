@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {Link} from "react-router-dom";
-import {  useDispatch, useSelector } from "react-redux"
-import { deleteProvider } from "../../actions"
+import { useSelector } from "react-redux"
+import axiosInstance from '../Axios'
 
 export default function Providers() {
 
-    const providers = useSelector(state => state.providersReducer)
-    const dispatch = useDispatch();
+    const [providers, setProviders] = useState(useSelector(state => state.providersReducer))
 
+    useEffect(() => {
+        axiosInstance.get(`users/providers`).then(res => {
+            setProviders(res.data)
+        })
+    }, [])
+
+    const removeProvider = (id) => {
+        axiosInstance.put(`users/${id}/`, {
+            is_staff: false
+        })
+        window.location.reload(false)
+    }
     return (
         <div className="container">
             <div className="jumbotron jumbotron-fluid">
@@ -28,16 +39,15 @@ export default function Providers() {
                                         <i className="bi bi-three-dots-vertical v-menu-icon"></i> 
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><Link to= {`/editprovider/${index}`} className="dropdown-item" href="#">Edit</Link></li>
-                                        <li><a onClick = {() => dispatch(deleteProvider(index))} className="dropdown-item" href="#">Delete</a></li>
+                                        <li><a onClick = {() => removeProvider(provider.id)} className="dropdown-item" href="#">Remove</a></li>
                                     </ul>
                                 </div>
                                 <div className="content">
-                                <h3 className="card-title">{provider.name}</h3>
+                                <h3 className="card-title">{provider.full_name}</h3>
+                                <hr></hr>
                                 <div className="card-text">
                                     <ul className="list-unstyled">
-                                        <li>Queue: <span className="font-bold">{provider.queue}</span></li>
-                                        <li>Station: <span className="font-bold">{provider.station}</span></li>
+                                        <li>Email: <span className="font-bold">{provider.email}</span></li>
                                     </ul>
                                 </div>
                                 </div>
