@@ -17,8 +17,6 @@ export default function CreateStation() {
             axiosInstance.get(`queues`),
             axiosInstance.get(`users/providers`)
         ]).then(res => {
-            console.log(res[0].data)
-            console.log(res[1].data)
             setAvailableQueues(res[0].data)
             setProviders(res[1].data)
         })

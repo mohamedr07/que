@@ -12,6 +12,11 @@ export default function Stations() {
             setAvailableStations(res.data)
         })
     }, [])
+
+    const deleteStation = (id) => {
+        axiosInstance.delete(`stations/${id}`).then(console.log("deleted"))
+        window.location.reload(false)
+    }
     return (
         <div className="container">
             <div className="jumbotron jumbotron-fluid">
@@ -33,7 +38,7 @@ export default function Stations() {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li><Link to= {`/editstation/${station.id}`} className="dropdown-item" href="#">Edit</Link></li>
-                                        <li><a onClick = {() => null} className="dropdown-item" href="#">Delete</a></li>
+                                        <li><a onClick = {() => deleteStation(station.id)} className="dropdown-item" href="#">Delete</a></li>
                                     </ul>
                                 </div>
                                 <div className="content">
@@ -43,6 +48,7 @@ export default function Stations() {
                                     <hr></hr>
                                     <ul className="list-unstyled">
                                         <li>Provider: <span className="font-bold">{station.provider.email}</span></li>
+                                        <li>Queue: <span className="font-bold">{station.queue}</span></li>
                                     </ul>
                                 </div>
                                 </div>

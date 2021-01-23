@@ -1,20 +1,41 @@
-import React, { useState } from 'react'
-import {  useDispatch, useSelector } from "react-redux"
-import { editStation } from "../../actions"
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
+import axiosInstance from '../Axios'
 
 
 export default function EditStation({match}) {
 
-    const editedStationIndex  = match.params.id
-    const dispatch = useDispatch();
+    const editedStationId  = match.params.id
     
-    const availableQueues = useSelector(state => state.queuesReducer)
-    const providers = useSelector(state => state.providersReducer)
-    const [stationLocation, setStationLocation] = useState(useSelector(state => state.stationsReducer[editedStationIndex].location))
-    const [selectedQueue, setSelectedQueue] = useState(useSelector(state => state.stationsReducer[editedStationIndex].queue))
-    const [selectedProvider, setSelectedProvider] = useState(useSelector(state => state.stationsReducer[editedStationIndex].provider))
+    const [availableQueues, setAvailableQueues] = useState(useSelector(state => state.queuesReducer))
+    const [providers, setProviders] = useState(useSelector(state => state.providersReducer))
+    const [stationLocation, setStationLocation] = useState('')
+    const [selectedQueue, setSelectedQueue] = useState('')
+    const [selectedProvider, setSelectedProvider] = useState('')
 
+    useEffect(() => {
+        axios.all([
+            axiosInstance.get(`stations/${editedStationId}`),
+            axiosInstance.get(`queues`),
+            axiosInstance.get(`users/providers`)
+        ]).then(res => {
+            setStationLocation(res[0].data.name)
+            setSelectedQueue(res[0].data.queue)
+            setSelectedProvider(res[0].data.provider.id)
+            setAvailableQueues(res[1].data)
+            setProviders(res[2].data)
+        })
+    }, [])
+
+    const handleSubmit = () => {
+        axiosInstance.put(`stations/${editedStationId}`, {
+            name: stationLocation,
+            provider: selectedProvider,
+            queue: selectedQueue
+        }).then(console.log("edited"))
+    }
     const handleSelectedQueueChange = (e) => {
         setSelectedQueue(e.target.value);
     }
@@ -46,7 +67,7 @@ export default function EditStation({match}) {
                                 <select value={selectedQueue} onChange={handleSelectedQueueChange} className="form-select btn-shape" aria-label="Default select example">
                                     <option defaultValue>Select queue</option>
                                     {availableQueues.map((queue, index) => (
-                                        <option key={index} value={queue.name}>{queue.name}</option>
+                                        <option key={index} value={queue.id}>{queue.name}</option>
                                     ))}
                                 </select>
                             </div>
@@ -54,11 +75,11 @@ export default function EditStation({match}) {
                                 <select value={selectedProvider} onChange={handleSelectedProviderChange} className="form-select btn-shape" aria-label="Default select example">
                                     <option defaultValue>Select provider</option>
                                     {providers.map((provider, index) => (
-                                        <option key={index} value={provider.name}>{provider.name}</option>
+                                        <option key={index} value={provider.id}>{provider.email}</option>
                                     ))}
                                 </select>
                             </div>
-                            <Link to="/stations" onClick = {() => dispatch(editStation(editedStationIndex, stationLocation, selectedQueue, selectedProvider))} className="btn btn-primary btn-shape ">Submit</Link>
+                            <Link to="/stations" onClick = {handleSubmit} className="btn btn-primary btn-shape ">Submit</Link>
                         </form>
                     </div>
                 </div>
