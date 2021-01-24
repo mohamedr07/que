@@ -1,3 +1,18 @@
+export const addUser = (id, name, processes, queues) => {
+    return {
+        type: 'ADD_USER',
+        payload: {
+            id: id,
+            name: name,
+            queues: queues,
+            processes: processes
+        }
+
+    }
+}
+
+
+
 
 // ............... PROCESSES .................
 

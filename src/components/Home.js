@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import {  useSelector } from "react-redux"
+import axiosInstance from './Axios';
 
 export default function Home () {
 
-    const user = useSelector(state => state.userReducer)
-    const [totalEstimatedTime, setTotalEstimatedTime] = useState(0)
+    const [user, setUser] = useState(useSelector(state => state.userReducer))
+    // const [totalEstimatedTime, setTotalEstimatedTime] = useState(0)
     
     useEffect(() => {
-        let ET = 0;
-        user.queues.map(q => {
-            if(q.completed == false) {
-                ET += q.estimatedTime
-            }
+        axiosInstance.get(`users/${localStorage.getItem('id')}`).then(res => {
+            console.log(localStorage.getItem('id'))
+            console.log(res.data.user)
+            setUser(res.data.user)
         })
-        setTotalEstimatedTime(ET)
+        
     }, [])
+    // useEffect(() => {
+    //     let ET = 0;
+    //     user.queues.map(q => {
+    //         if(q.completed == false) {
+    //             ET += q.estimatedTime
+    //         }
+    //     })
+    //     setTotalEstimatedTime(ET)
+    // }, [])
 
     return (
             <div className="container ">
@@ -29,7 +38,7 @@ export default function Home () {
                                             <div className="card-body">
                                                 <div className="align-left-h">
                                                     <label id="l1" className="p-1 txt-dec-bold">Name:</label>
-                                                    <label id="l2" className="p-1 txt-dec">{user.name}</label>
+                                                    <label id="l2" className="p-1 txt-dec">{user.full_name}</label>
                                                 </div>
                                                 <div className="align-left-h">
                                                     <label id="l3" className="p-1 txt-dec-bold">ID:</label>
@@ -37,25 +46,25 @@ export default function Home () {
                                                 <div className="align-left-h">
                                                     <label id="l5" className="p-1 txt-dec-bold">Processes:</label>
                                                     {
-                                                        user.processes.map((u, index) => {
+                                                        user.processes ? user.processes.map((u, index) => {
                                                             return <label key = {index} id="l6" className="p-1 txt-dec">{u},</label>
-                                                        })
+                                                        }) : null
                                                     }
                                                 </div>
                                                 <div className="align-left-h">
-                                                    <label id="l7" className="p-1 txt-dec-bold">Current queue:</label>
-                                                    {
+                                                    <label id="l7" className="p-1 txt-dec-bold">Current queue: </label>
+                                                    {/* {
                                                         user.queues.map(q => {
                                                             if(q.current == true){
                                                                 return <label id="l8" className="p-1 txt-dec">{q.name}</label>
                                                             }
                                                         })
-                                                    }
+                                                    } */}
                                                 </div>
-                                                <div className="align-left-h">
+                                                {/* <div className="align-left-h">
                                                     <label id="l9" className="p-1 txt-dec-bold">Total estimated time:</label>
                                                     <label id="l10" className="p-1 txt-dec">{totalEstimatedTime}</label>
-                                                </div>
+                                                </div> */}
                                                 <div className="align-left-h">
                                                     <Link to="/" className="btn btn-primary btn-shape btn-add ">Drop Service</Link>
                                                 </div>
@@ -65,11 +74,11 @@ export default function Home () {
                                     <div className="col-lg-6 col-md-12 ">
                                         <label className="btn btn-circle mt-4 ">
                                             01
-                                            {user.queues.map(q => {
+                                            {/* {user.queues.map(q => {
                                                 if(q.current == true){
                                                     return <div className="est-time">Queue estimated time: {q.estimatedTime}</div>
                                                 }
-                                            })}
+                                            })} */}
                                         </label>
                                     </div>
                                     <br></br>
@@ -81,7 +90,7 @@ export default function Home () {
                                         <div className="hori-timeline">
                                             <ul className="list-inline events">
                                             {
-                                                user.queues.map((q, index) => {
+                                                user.queues ? user.queues.map((q, index) => {
                                                     if(index <= 3) {
                                                         return <li className="list-inline-item event-list">
                                                             <div>
@@ -96,7 +105,7 @@ export default function Home () {
                                                             </div>
                                                         </li>
                                                     }
-                                                })
+                                                }) : null
                                             }
                                             
                                             </ul>

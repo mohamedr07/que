@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import axiosInstance from './Axios'
+
 import '../styles/login.css'
 
 export default function LoginView() {
@@ -22,16 +23,16 @@ export default function LoginView() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axiosInstance.post(`token/`, {
+        axiosInstance.post(`login/`, {
             email: formData.email,
             password: formData.password,
         })
         .then((res) => {
             localStorage.setItem('access_token', res.data.access)
             localStorage.setItem('refresh_token', res.data.refresh)
+            localStorage.setItem('id', res.data.id)
             axiosInstance.defaults.headers['Authorization'] = 'JWT ' + localStorage.getItem('access_token')
-            history.push('/')
-            console.log(res.data.access)
+            history.push('/home')
         })
     }
 

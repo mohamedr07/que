@@ -44,7 +44,7 @@ export default function AssignProvider() {
                             <input className="form-control " value={search} onClick={() => setDisplay(true)} onChange={handleChange} placeholder="Select user to set as a provider" />
                             
                             {display && (
-                                <ul className="list-group ">
+                                <ul className="list-group">
                                     {users.map((u, i) => {
                                         return (
                                             <li onClick={() => handleSelect(u)} className="list-group-item d-flex justify-content-between align-items-center" key={i}>

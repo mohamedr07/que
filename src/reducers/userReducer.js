@@ -1,40 +1,13 @@
-const user = {
-        id: 1,
-        name: 'Mohamed Rashad',
-        processes: ['Dentistery clinic', 'Eyes clinic'],
-        queues: [
-            {
-                name: 'Payment',
-                current: false,
-                completed: true,
-                estimatedTime: 3.12
-            },
-            {
-                name: 'Assessment',
-                current: false,
-                completed: true,
-                estimatedTime: 2.56
-            },
-            {
-                name: 'Dentistery clinic',
-                current: true,
-                completed: false,
-                estimatedTime: 5.90
-            },
-            {
-                name: 'Eyes clinic',
-                current: false,
-                completed: false,
-                estimatedTime: 7.30
-            },
-
-        ]
-    }
+const user = {};
 
 const userReducer = (state = user, action) => {
     switch(action.type){
-        case 'ADD_PROVIDER': {
-            return [...state,action.payload];
+        case 'ADD_USER': {
+            state.id = action.payload.id;
+            state.name = action.payload.name;
+            state.processes = action.payload.processes;
+            state.queues = action.payload.queues;
+            return state
         }
         case 'MODIFY_USER': {
             state[action.payload.index].name = action.payload.name;
