@@ -85,20 +85,20 @@ export default function Home () {
 
                             <div className="container-fluid">
                                 <div className="row">
-                                    <div class="col-lg-12">
+                                    <div className="col-lg-12">
                                         <h4 className="mt-5 mb-5 align-left-h">Listed Queues</h4>
                                         <div className="hori-timeline">
                                             <ul className="list-inline events">
                                             {
                                                 user.queues ? user.queues.map((q, index) => {
                                                     if(index <= 3) {
-                                                        return <li className="list-inline-item event-list">
+                                                        return <li key ={index} className="list-inline-item event-list">
                                                             <div>
                                                                 {q.completed ? <div className="event-date btn-primary"><i className="bi bi-check"></i></div> : <div className="event-date btn-primary">{index + 1}</div>}                                                            
                                                                 <div className={q.completed ? "card mb-0 que-completed" : "card mb-0"}>
                                                                     <div className="card-body card-user-2">
                                                                         {/* <h2 className="card-number mt-2">{index + 1}</h2> */}
-                                                                        <h5 className="card-title "><span>{q.name}</span></h5>
+                                                                        <h5 className="card-title "><span>{q}</span></h5>
                                                                     </div>
                                                                 </div>
                                                                 
