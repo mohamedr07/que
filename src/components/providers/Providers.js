@@ -14,9 +14,7 @@ export default function Providers() {
     }, [])
 
     const removeProvider = (id) => {
-        axiosInstance.put(`users/${id}/`, {
-            is_staff: false
-        })
+        axiosInstance.put(`users/setunsetprovider/${id}/`)
         window.location.reload(false)
     }
     return (

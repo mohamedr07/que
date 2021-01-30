@@ -2,19 +2,31 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import {  useSelector } from "react-redux"
 import axiosInstance from './Axios';
+import { w3cwebsocket as W3CWebSocket } from "websocket";
+import axios from 'axios';
 
 export default function Home () {
 
     const [user, setUser] = useState(useSelector(state => state.userReducer))
-    // const [totalEstimatedTime, setTotalEstimatedTime] = useState(0)
+    const [queueId, setQueueId] = useState(3)
+    const [number, setNumber] = useState(0)
+    const client = new W3CWebSocket('ws://127.0.0.1:8000/ws/queue/' + queueId + '/');
     
+    // const [totalEstimatedTime, setTotalEstimatedTime] = useState(0)
+
     useEffect(() => {
         axiosInstance.get(`users/${localStorage.getItem('id')}`).then(res => {
             console.log(localStorage.getItem('id'))
             console.log(res.data.user)
             setUser(res.data.user)
         })
-        
+        client.onopen = () => {
+            console.log('WebSocket Client Connected');
+        };
+        client.onmessage = (message) => {
+            const dataFromServer = JSON.parse(message.data);
+            setNumber(dataFromServer.message)
+        }
     }, [])
     // useEffect(() => {
     //     let ET = 0;
@@ -73,7 +85,7 @@ export default function Home () {
                                     </form>
                                     <div className="col-lg-6 col-md-12 ">
                                         <label className="btn btn-circle mt-4 ">
-                                            01
+                                            {number}
                                             {/* {user.queues.map(q => {
                                                 if(q.current == true){
                                                     return <div className="est-time">Queue estimated time: {q.estimatedTime}</div>

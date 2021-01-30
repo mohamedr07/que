@@ -9,7 +9,7 @@ export default function AssignProvider() {
 
     const handleChange = (e) => {
         if(e.target.value != ''){
-            axiosInstance.get(`users/addprovider/${e.target.value}`).then(res => {
+            axiosInstance.get(`users/searchusers/${e.target.value}`).then(res => {
                 setUsers([])
                 setUsers(res.data)
             })
@@ -25,9 +25,7 @@ export default function AssignProvider() {
         setSearch(u.email)
     }
     const setProvider = () => {
-        axiosInstance.put(`users/${selectedUserID}/`, {
-            is_staff: true
-        })
+        axiosInstance.put(`users/setunsetprovider/${selectedUserID}/`)
     }
     return (
         <div className="container">

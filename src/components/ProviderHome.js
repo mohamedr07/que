@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import QueueUsers from './QueueUsers'
+import { w3cwebsocket as W3CWebSocket } from "websocket";
+import axiosInstance from './Axios';
+
 
 function ProviderHome() {
 
-    const [showUsers, setShowUsers] = React.useState(false)
+    const [showUsers, setShowUsers] = useState(false)
+    const [queueId, setQueueId] = useState(3)
+    const client = new W3CWebSocket('ws://127.0.0.1:8000/ws/queue/' + queueId + '/');
     const onClick = () => {
         setShowUsers(!showUsers)
+    }
+
+    const onAdvance = () => {
+        axiosInstance.put(`queues/${queueId}/advance`).then(res => {
+            client.send(JSON.stringify({
+                type: "message",
+                number: res.data
+            }))
+        })
     }
 
     return (
@@ -32,7 +46,7 @@ function ProviderHome() {
                                                     <label id="l2" className="p-1 txt-dec">Payment</label>
                                                 </div>
                                                 <div className="align-left-h">
-                                                    <button type="button" className="btn btn-primary btn-shape btn-add">Advance</button>
+                                                    <button type="button" onClick={onAdvance} className="btn btn-primary btn-shape btn-add">Advance</button>
                                                 </div>
                                             </div>
                                         </div>                                     
