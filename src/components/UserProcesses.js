@@ -1,10 +1,23 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useSelector } from "react-redux"
+import axiosInstance from './Axios';
+import { useHistory } from "react-router-dom";
+
 
 function UserProcesses() {
 
         const [processes, setProcesses] = useState(useSelector(state => state.processReducer));
-
+        let history = useHistory();
+    
+        useEffect(() => {
+            if(localStorage.getItem('id') == null){
+                history.push('/login')
+            }
+            axiosInstance.get(`processes/`).then(res => {
+                setProcesses(res.data)
+            })
+        }, [])
+        
         const handleOptionChange = (p) => {
             p.active= !p.active;
             setProcesses([...processes]);
@@ -23,7 +36,7 @@ function UserProcesses() {
                 <br/><br/> 
                 <div className="row">
                     {processes.map(p => (
-                    <div key={p.id} className="col-xl-4 col-lg-4 col-md-6 ">
+                    <div key={p.id} className="col-xl-3 col-lg-4 col-md-6 ">
                         <div className="form-signin hvr-grow-shadow">
                             <div className={p.active ? "card card-user processTrue": "card card-user processFalse"} onClick={() => handleOptionChange(p)}>
                                 <div className="card-body">
@@ -31,9 +44,9 @@ function UserProcesses() {
                                     <h3 className="card-title">{p.name}</h3>
                                     <div className="card-text">
                                     <ul className="list-unstyled">
-                                            {p.processQueues.map((q) => {
+                                            {p.processQueues ? p.processQueues.map((q) => {
                                                 return <li key={q.id}>{q.name}</li>
-                                            })}   
+                                            }): null }   
                                         </ul>
                                     </div>
                                 </div>

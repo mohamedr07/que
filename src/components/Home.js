@@ -4,29 +4,34 @@ import {  useSelector } from "react-redux"
 import axiosInstance from './Axios';
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 export default function Home () {
 
     const [user, setUser] = useState(useSelector(state => state.userReducer))
-    const [queueId, setQueueId] = useState(3)
+    const [queueId, setQueueId] = useState(1)
     const [number, setNumber] = useState(0)
     const client = new W3CWebSocket('ws://127.0.0.1:8000/ws/queue/' + queueId + '/');
+    let history = useHistory();
     
     // const [totalEstimatedTime, setTotalEstimatedTime] = useState(0)
 
     useEffect(() => {
-        axiosInstance.get(`users/${localStorage.getItem('id')}`).then(res => {
-            console.log(localStorage.getItem('id'))
-            console.log(res.data.user)
-            setUser(res.data.user)
-        })
-        client.onopen = () => {
-            console.log('WebSocket Client Connected');
-        };
-        client.onmessage = (message) => {
-            const dataFromServer = JSON.parse(message.data);
-            setNumber(dataFromServer.message)
+        if(localStorage.getItem('id') == null){
+            history.push('/login')
         }
+        // axiosInstance.get(`users/${localStorage.getItem('id')}`).then(res => {
+        //     console.log(localStorage.getItem('id'))
+        //     console.log(res.data.user)
+        //     setUser(res.data.user)
+        // })
+        // client.onopen = () => {
+        //     console.log('WebSocket Client Connected');
+        // };
+        // client.onmessage = (message) => {
+        //     const dataFromServer = JSON.parse(message.data);
+        //     setNumber(dataFromServer.message)
+        // }
     }, [])
     // useEffect(() => {
     //     let ET = 0;

@@ -23,7 +23,7 @@ export default function LoginView() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axiosInstance.post(`login/`, {
+        axiosInstance.post(`login/`, { 
             email: formData.email,
             password: formData.password,
         })

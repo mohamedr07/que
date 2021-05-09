@@ -7,7 +7,7 @@ import axiosInstance from './Axios';
 function ProviderHome() {
 
     const [showUsers, setShowUsers] = useState(false)
-    const [queueId, setQueueId] = useState(3)
+    const [queueId, setQueueId] = useState(1)
     const client = new W3CWebSocket('ws://127.0.0.1:8000/ws/queue/' + queueId + '/');
     const onClick = () => {
         setShowUsers(!showUsers)

@@ -21,8 +21,8 @@ import EditQueue from './components/queues/EditQueue'
 import EditStation from './components/stations/EditStation'
 import Screen from "./components/Screen"
 
-
 function App() {
+
   return (
     <div className="App">
       <Router>
@@ -34,9 +34,7 @@ function App() {
               <Route exact path="/">
                 <UserProcesses />
               </Route>
-              <Route path="/home">
-                <Home />
-              </Route>
+              <Route path="/home" component={Home} />
               <Route path="/providerHome">
                 <ProviderHome />
               </Route>
