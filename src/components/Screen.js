@@ -6,6 +6,10 @@ export default function Screen() {
     useSelector((state) => state.stationsReducer)
   );
 
+  let msg = new SpeechSynthesisUtterance();
+  msg.voice = speechSynthesis.getVoices()[3];
+  msg.text = 'Client x please head to station y';
+
   return (
     <div className="container">
       <div class="row">
@@ -45,6 +49,7 @@ export default function Screen() {
           );
         })}
       </div>
+      <button onClick={() => window.speechSynthesis.speak(msg)}>Speak</button>
     </div>
   );
 }
