@@ -20,18 +20,18 @@ export default function Home () {
         if(localStorage.getItem('id') == null){
             history.push('/login')
         }
-        // axiosInstance.get(`users/${localStorage.getItem('id')}`).then(res => {
-        //     console.log(localStorage.getItem('id'))
-        //     console.log(res.data.user)
-        //     setUser(res.data.user)
-        // })
-        // client.onopen = () => {
-        //     console.log('WebSocket Client Connected');
-        // };
-        // client.onmessage = (message) => {
-        //     const dataFromServer = JSON.parse(message.data);
-        //     setNumber(dataFromServer.message)
-        // }
+        axiosInstance.get(`users/${localStorage.getItem('id')}`).then(res => {
+            console.log(localStorage.getItem('id'))
+            console.log(res.data.user)
+            setUser(res.data.user)
+        })
+        client.onopen = () => {
+            console.log('WebSocket Client Connected');
+        };
+        client.onmessage = (message) => {
+            const dataFromServer = JSON.parse(message.data);
+            setNumber(dataFromServer.message)
+        }
     }, [])
     // useEffect(() => {
     //     let ET = 0;

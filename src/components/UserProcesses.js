@@ -23,6 +23,16 @@ function UserProcesses() {
             setProcesses([...processes]);
         };
 
+        const handleSubmit = () => {
+            processes.map(p => (
+                p.active ? axiosInstance.post(`processes/${p.id}/join`,{ 
+                    user: localStorage.getItem('id'),
+                }) : null
+            ))
+            history.push('/home')
+            
+        };
+
         return (
             
             <div className="container">
@@ -55,7 +65,7 @@ function UserProcesses() {
                     </div> 
                     ))}
                 </div>
-                <button type="button" className="btn btn-primary btn-add">Select</button>
+                <button type="button" onClick={() => handleSubmit()} className="btn btn-primary btn-add">Select</button>
             </div>
         )
 }
