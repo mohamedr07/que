@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 function ProviderHome() {
   const [showUsers, setShowUsers] = useState(false);
-  const [queueId, setQueueId] = useState(11);
+  const [queueId, setQueueId] = useState(8);
 
   let history = useHistory();
   const client = new W3CWebSocket(

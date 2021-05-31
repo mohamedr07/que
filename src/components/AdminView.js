@@ -55,7 +55,7 @@ const AdminView = () => {
             </div>
           </div>
         </div>
-        {/* <div className="col-xl-4 col-lg-6 col-md-6">
+        <div className="col-xl-4 col-lg-6 col-md-6">
           <div className="card-container">
             <div className="card">
               <div className="box">
@@ -73,7 +73,7 @@ const AdminView = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
         <div className="col-xl-4 col-lg-6 col-md-6">
           <div className="card-container">
             <div className="card">
