@@ -10,6 +10,7 @@ export default function Home() {
   const [user, setUser] = useState(useSelector((state) => state.userReducer));
   const [queueId, setQueueId] = useState(1);
   const [info, setInfo] = useState({ position: 0, estimated_time: 0 });
+  const [number, setNumber] = useState(0);
   const client = new W3CWebSocket(
     `wss://${window.location.host}/ws/queue/` + queueId + '/'
   );
@@ -50,7 +51,7 @@ export default function Home() {
     client.onmessage = (message) => {
       console.log('message');
       const dataFromServer = JSON.parse(message.data);
-
+      setNumber(dataFromServer.message);
       if (dataFromServer.message == localStorage.getItem('id')) {
         alert('your turn');
         window.location.reload();
@@ -140,7 +141,7 @@ export default function Home() {
                 </form>
                 <div className="col-lg-6 col-md-12 ">
                   <label className=" btn-circle mt-4 ">
-                    {info.position}
+                    {number}
 
                     {/* {user.queues.map(q => {
                                                 if(q.current == true){
