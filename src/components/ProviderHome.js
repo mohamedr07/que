@@ -6,11 +6,12 @@ import { useHistory } from 'react-router-dom';
 
 function ProviderHome() {
   const [showUsers, setShowUsers] = useState(false);
-  const [queueId, setQueueId] = useState(8);
+  const [queueId, setQueueId] = useState(1);
 
   let history = useHistory();
+  console.log(window.location.host);
   const client = new W3CWebSocket(
-    `ws://${window.location.host}/ws/queue/` + queueId + '/'
+    `wss://${window.location.host}/ws/queue/` + queueId + '/'
   );
 
   useEffect(() => {
