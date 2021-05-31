@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 function ProviderHome() {
   const [showUsers, setShowUsers] = useState(false);
-  const [queueId, setQueueId] = useState(1);
+  const [queueId, setQueueId] = useState(11);
 
   let history = useHistory();
   const client = new W3CWebSocket(
@@ -24,6 +24,7 @@ function ProviderHome() {
 
   const onAdvance = () => {
     axiosInstance.put(`queues/${queueId}/advance`).then((res) => {
+      console.log(res);
       client.send(
         JSON.stringify({
           type: 'message',
