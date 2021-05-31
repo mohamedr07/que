@@ -11,7 +11,7 @@ export default function Home() {
   const [queueId, setQueueId] = useState(1);
   const [info, setInfo] = useState({ position: 0, estimated_time: 0 });
   const client = new W3CWebSocket(
-    'ws://127.0.0.1:8000/ws/queue/' + queueId + '/'
+    `ws://${window.location.host}/ws/queue/` + queueId + '/'
   );
   let history = useHistory();
 
