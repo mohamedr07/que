@@ -9,8 +9,8 @@ export default function Stations() {
   );
 
   useEffect(() => {
-    console.log(window.location.host);
     axiosInstance.get(`stations`).then((res) => {
+      console.log(res.data);
       setAvailableStations(res.data);
     });
   }, []);

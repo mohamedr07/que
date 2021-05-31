@@ -49,11 +49,6 @@ export class Navbar extends Component {
                     screen
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/stations" className="nav-link navbar-text">
-                    station
-                  </Link>
-                </li>
               </ul>
             </div>
           </div>

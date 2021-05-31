@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import QueueUsers from './QueueUsers';
+import { useSelector } from 'react-redux';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
 import axiosInstance from './Axios';
 import { useHistory } from 'react-router-dom';
 
 function ProviderHome() {
+  const [user, setUser] = useState(useSelector((state) => state.userReducer));
   const [showUsers, setShowUsers] = useState(false);
-  const [queueId, setQueueId] = useState(1);
+  const [queueId, setQueueId] = useState(0);
+  const [station, setStation] = useState(0);
 
   let history = useHistory();
   console.log(window.location.host);
@@ -18,6 +21,22 @@ function ProviderHome() {
     if (localStorage.getItem('id') == null) {
       history.push('/login');
     }
+
+    const load_user = async () => {
+      let res = await axiosInstance.get(`users/${localStorage.getItem('id')}`);
+      setUser(res.data.user);
+    };
+
+    const get_queue_info = async () => {
+      let res = await axiosInstance.get(
+        `stations/station/${localStorage.getItem('id')}`
+      );
+      setQueueId(res.data.queue);
+      setStation(res.data.name);
+    };
+
+    load_user();
+    get_queue_info();
   }, []);
   const onClick = () => {
     setShowUsers(!showUsers);
@@ -53,7 +72,7 @@ function ProviderHome() {
                           Name:
                         </label>
                         <label id="l2" className="p-1 txt-dec">
-                          Mohamed Rashad
+                          {user.full_name}
                         </label>
                       </div>
                       <div className="align-left-h">
@@ -61,7 +80,7 @@ function ProviderHome() {
                           Station ID:
                         </label>
                         <label id="l2" className="p-1 txt-dec">
-                          #1235
+                          {station}
                         </label>{' '}
                       </div>
                       <div className="align-left-h">
@@ -69,7 +88,7 @@ function ProviderHome() {
                           Queue:
                         </label>
                         <label id="l2" className="p-1 txt-dec">
-                          Payment
+                          {queueId}
                         </label>
                       </div>
                       <div className="align-left-h">
