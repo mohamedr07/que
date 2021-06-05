@@ -49,7 +49,7 @@ export default function Home() {
       console.log('WebSocket Client Connected');
     };
     client.onmessage = (message) => {
-      console.log('message');
+      console.log(message);
       const dataFromServer = JSON.parse(message.data);
       setNumber(dataFromServer.message);
       if (dataFromServer.message == localStorage.getItem('id')) {
@@ -140,7 +140,7 @@ export default function Home() {
                   </div>
                 </form>
                 <div className="col-lg-6 col-md-12 ">
-                  <label className=" btn-circle mt-4 ">
+                  <label className="btn btn-circle mt-4 ">
                     {number}
 
                     {/* {user.queues.map(q => {
