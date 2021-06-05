@@ -44,11 +44,11 @@ export class Navbar extends Component {
                     Logout
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="/screen" className="nav-link navbar-text">
                     screen
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
