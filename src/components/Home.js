@@ -51,8 +51,8 @@ export default function Home() {
     client.onmessage = (message) => {
       console.log(message);
       const dataFromServer = JSON.parse(message.data);
-      setNumber(dataFromServer.message);
-      if (dataFromServer.message == localStorage.getItem('id')) {
+      setNumber(dataFromServer.message.queue);
+      if (dataFromServer.message.user == localStorage.getItem('id')) {
         alert('your turn');
         window.location.reload();
       }
