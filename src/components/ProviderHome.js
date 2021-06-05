@@ -49,6 +49,7 @@ function ProviderHome() {
         JSON.stringify({
           type: 'message',
           number: res.data,
+          station: station,
         })
       );
     });

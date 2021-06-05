@@ -53,7 +53,7 @@ export default function Home() {
       const dataFromServer = JSON.parse(message.data);
       setNumber(dataFromServer.message.queue);
       if (dataFromServer.message.user == localStorage.getItem('id')) {
-        alert('your turn');
+        alert('Your turn please head to station');
         window.location.reload();
       }
     };
