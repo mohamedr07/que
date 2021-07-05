@@ -70,8 +70,7 @@ export default function RegisterView() {
                                     onClick={handleSubmit}
                                     >Sign up</button>
                                     <hr className="my-4" />
-                                    <button className="btn btn-google btn-block text-uppercase btn-shape" type="submit"><i className="bi bi-google mr-2"></i> Google</button>
-                                    <button className="btn btn-facebook btn-block text-uppercase btn-shape" type="submit"><i className="bi bi-facebook mr-2"></i> Facebook</button>
+                                    
                                 </form>
                             </div>
                         </div>

@@ -5,7 +5,7 @@ import Logout from './components/Logout'
 import RegisterView from './components/RegisterView';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route,useHistory} from 'react-router-dom';
 import Processes from './components/processes/Processes';
 import Providers from './components/providers/Providers'
 import Stations from './components/stations/Stations'
@@ -20,13 +20,22 @@ import EditProcess from './components/processes/EditProcess';
 import EditQueue from './components/queues/EditQueue'
 import EditStation from './components/stations/EditStation'
 import Screen from "./components/Screen"
+import { useEffect,useState } from 'react';
+import axiosInstance from './components/Axios';
 
 function App() {
+  const [user,setUser] = useState(null)
+  useEffect(()=>{
+    let id = localStorage.getItem("id")
+    if (id != null) axiosInstance.get(`users/${id}`).then((res)=>setUser(res.data.user))
+    
+
+  },[])
 
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar user={user}/>
         {/* align-items-center */}
         <section className="App-header d-flex  min-vh-100">
           <div className="container text-center">
@@ -46,10 +55,10 @@ function App() {
                 <Processes />
               </Route>
               <Route path="/login">
-                <LoginView />
+                <LoginView setUser={setUser} />
               </Route>
               <Route path="/logout">
-                <Logout />
+                <Logout setUser={setUser} />
               </Route>
               <Route path="/register">
                 <RegisterView />

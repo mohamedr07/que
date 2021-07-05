@@ -7,7 +7,7 @@
 }
 
 body {
-  background: #f7f0e4 !important;
+  background: #EDF6E5 !important;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
@@ -22,11 +22,11 @@ a {
 } 
 
 .navbar-grey .navbar-text {
-  color: #f7f0e4;
+  color: #EDF6E5;
 }
 
 .navbar-grey .navbar-brand {
-  color: #f7f0e4;
+  color: #EDF6E5;
 }
 
 .btn-primary {
@@ -121,7 +121,7 @@ a {
 }
 
 .card {
-  background: #f7f0e4 !important;
+  background: #EDF6E5 !important;
 }
 .progresses {
   display: flex;

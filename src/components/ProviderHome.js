@@ -10,6 +10,8 @@ function ProviderHome() {
   const [showUsers, setShowUsers] = useState(false);
   const [queueId, setQueueId] = useState(0);
   const [station, setStation] = useState(0);
+  const [count,setCount] = useState(0);
+  const [users,setUsers]=useState([])
 
   let history = useHistory();
   console.log(window.location.host);
@@ -35,16 +37,24 @@ function ProviderHome() {
       setStation(res.data.name);
     };
 
+    const get_queue_users = async ()=>{
+      let res = await axiosInstance.get(`queues/${queueId}/users`);
+      setUsers(res.data.users)
+      setCount(res.data.count);
+    }
+
     load_user();
     get_queue_info();
-  }, []);
+    get_queue_users();
+  }, [queueId]);
   const onClick = () => {
     setShowUsers(!showUsers);
   };
 
   const onAdvance = () => {
     axiosInstance.put(`queues/${queueId}/advance`).then((res) => {
-      console.log(res);
+      setCount(count-1)
+      setUser(users.shift())
       client.send(
         JSON.stringify({
           type: 'message',
@@ -106,10 +116,10 @@ function ProviderHome() {
                 </form>
                 <div className="col-lg-6 col-md-12">
                   <button className="btn btn-circle" onClick={onClick}>
-                    10<div className="est-time">Current in queue</div>
+                    {count}<div className="est-time">Current in queue</div>
                   </button>
                 </div>
-                <div>{showUsers ? <QueueUsers /> : null}</div>
+                <div>{showUsers ? <QueueUsers users={users}/> : null}</div>
               </div>
             </div>
           </div>

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import axiosInstance from './Axios'
+import store from '../index'
+import {addUser} from '../actions/index'
 
 import '../styles/login.css'
 
-export default function LoginView() {
+export default function LoginView({setUser}) {
 
     const history = useHistory()
     const initialFormData = Object.freeze({
@@ -32,6 +34,7 @@ export default function LoginView() {
             localStorage.setItem('refresh_token', res.data.refresh)
             localStorage.setItem('id', res.data.id)
             axiosInstance.defaults.headers['Authorization'] = 'JWT ' + localStorage.getItem('access_token')
+            axiosInstance.get(`users/${res.data.id}`).then((res)=>setUser(res.data.user))
             history.push('/home')
         })
     }
@@ -55,21 +58,13 @@ export default function LoginView() {
                                         <label htmlFor="inputPassword">Password</label>
                                     </div>
 
-                                    <div className="custom-control custom-checkbox mb-2">
-                                        <input type="checkbox" className="custom-control-input btn-shape" id="customCheck1" />
-                                        <label className="custom-control-label" htmlFor="customCheck1">Stay signed in</label>
-                                    </div>
-                                    <div className="custom-control custom-checkbox mb-2">
-                                        <input type="checkbox" className="custom-control-input btn-shape" id="customCheck2" />
-                                        <label className="custom-control-label" htmlFor="customCheck2">Sign in as provider</label>
-                                    </div>
-                                    <div className="form-link"><a href="#">Forget password</a></div>
+                                    
+                                    
                                     <br/>
                                     <button className="btn btn-primary btn-block text-uppercase btn-shape" type="submit" onClick={handleSubmit}>Sign in</button>
                                     <Link to="/Register" className=" btn btn-primary btn-block text-uppercase btn-shape">Sign up</Link>
                                     <hr className="my-4" />
-                                    <button className="btn btn-google btn-block text-uppercase btn-shape" type="submit"><i className="bi bi-google mr-2"></i> Google</button>
-                                    <button className="btn btn-facebook btn-block text-uppercase btn-shape" type="submit"><i className="bi bi-facebook mr-2"></i> Facebook</button>
+                                    
                                 </form>
                             </div>
                         </div>

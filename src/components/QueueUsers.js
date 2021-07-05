@@ -1,19 +1,14 @@
 import React, { Component } from 'react'
 
-export class QueueUsers extends Component {
+export const  QueueUsers= ({users})=>  {
 
-    
-
-    render() {
-
-        const users = ['ahmed', 'mohamed', 'ali', 'abbas', 'ahmed', 'nada', '8anem', 'gamal']
 
         return (
             <div className="card mt-5">
                 <div className="card-body">
                     <ul className="list-group">
                         {users.map(i => (
-                            <li className="list-group-item">{i}</li>
+                            <li className="list-group-item">{i.id}:{i.name}</li>
                         ))}
                     </ul>
                     
@@ -21,6 +16,6 @@ export class QueueUsers extends Component {
             </div>
         )
     }
-}
+
 
 export default QueueUsers

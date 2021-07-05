@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axiosInstance from './Axios'
 
-export default function Logout() {
+export default function Logout({setUser}) {
     const history = useHistory()
 
     useEffect(() => {
@@ -13,6 +13,7 @@ export default function Logout() {
         localStorage.removeItem('refresh_token')
         localStorage.removeItem('id')
         axiosInstance.defaults.headers['Authorization'] = null
+        setUser(null)
         history.push('/login')
 
     })

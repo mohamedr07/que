@@ -1,11 +1,13 @@
-export const addUser = (id, name, processes, queues) => {
+export const addUser = (id, name, processes, queues,isStaff,isAdmin) => {
     return {
         type: 'ADD_USER',
         payload: {
             id: id,
             name: name,
             queues: queues,
-            processes: processes
+            processes: processes,
+            isStaff:isStaff,
+            isAdmin:isAdmin
         }
 
     }

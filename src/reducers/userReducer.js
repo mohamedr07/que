@@ -7,6 +7,8 @@ const userReducer = (state = user, action) => {
             state.name = action.payload.name;
             state.processes = action.payload.processes;
             state.queues = action.payload.queues;
+            state.isStaff = action.payload.isStaff;
+            state.isAdmin=action.payload.isAdmin;
             return state
         }
         case 'MODIFY_USER': {
