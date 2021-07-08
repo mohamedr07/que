@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 export default function Home() {
-  const [user, setUser] = useState(useSelector((state) => state.userReducer));
+  const [user, setUser] = useState(null);
   const [queueId, setQueueId] = useState(1);
   const [info, setInfo] = useState({ position: 0, estimated_time: 0 });
   const [number, setNumber] = useState(0);
@@ -44,6 +44,7 @@ export default function Home() {
 
     load_user();
     get_queue_id();
+    get_info();
 
     client.onopen = () => {
       console.log('WebSocket Client Connected');
@@ -57,7 +58,9 @@ export default function Home() {
         typeof dataFromServer.message.user,
         typeof localStorage.getItem('id')
       );
-      if (dataFromServer.message.user == localStorage.getItem('id')) {
+      if (
+        dataFromServer.message.user.toString() == localStorage.getItem('id')
+      ) {
         alert('your turn');
         window.location.reload();
       }

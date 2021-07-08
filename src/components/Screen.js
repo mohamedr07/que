@@ -13,7 +13,6 @@ export default function Screen() {
 
   useEffect(() => {
     get_stations_details();
-    console.log(connections);
     connections.forEach((connection) => {
       connection.onopen = () => {
         console.log('WebSocket Client Connected');
@@ -22,7 +21,7 @@ export default function Screen() {
         get_stations_details();
       };
     });
-  }, []);
+  }, [stations]);
 
   const get_stations_details = () => {
     axiosInstance
