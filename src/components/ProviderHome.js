@@ -9,9 +9,9 @@ function ProviderHome() {
   const [user, setUser] = useState(useSelector((state) => state.userReducer));
   const [showUsers, setShowUsers] = useState(false);
   const [queueId, setQueueId] = useState(0);
-  const [station, setStation] = useState(0);
-  const [count,setCount] = useState(0);
-  const [users,setUsers]=useState([])
+  const [station, setStation] = useState(null);
+  const [count, setCount] = useState(0);
+  const [users, setUsers] = useState([]);
 
   let history = useHistory();
   console.log(window.location.host);
@@ -34,14 +34,14 @@ function ProviderHome() {
         `stations/station/${localStorage.getItem('id')}`
       );
       setQueueId(res.data.queue);
-      setStation(res.data.name);
+      setStation({ id: res.data.id, name: res.data.name });
     };
 
-    const get_queue_users = async ()=>{
+    const get_queue_users = async () => {
       let res = await axiosInstance.get(`queues/${queueId}/users`);
-      setUsers(res.data.users)
+      setUsers(res.data.users);
       setCount(res.data.count);
-    }
+    };
 
     load_user();
     get_queue_info();
@@ -53,15 +53,19 @@ function ProviderHome() {
 
   const onAdvance = () => {
     axiosInstance.put(`queues/${queueId}/advance`).then((res) => {
-      setCount(count-1)
-      setUser(users.shift())
+      setCount(count - 1);
+      setUser(users.shift());
       client.send(
         JSON.stringify({
           type: 'message',
           number: res.data,
-          station: station,
+          station: station.name,
         })
       );
+      console.log(res.data);
+      axiosInstance.put(`stations/${station.id}`, {
+        'serving': res.data.queue,
+      });
     });
   };
 
@@ -91,7 +95,7 @@ function ProviderHome() {
                           Station ID:
                         </label>
                         <label id="l2" className="p-1 txt-dec">
-                          {station}
+                          {station ? station.name : ''}
                         </label>{' '}
                       </div>
                       <div className="align-left-h">
@@ -116,10 +120,11 @@ function ProviderHome() {
                 </form>
                 <div className="col-lg-6 col-md-12">
                   <button className="btn btn-circle" onClick={onClick}>
-                    {count}<div className="est-time">Current in queue</div>
+                    {count}
+                    <div className="est-time">Current in queue</div>
                   </button>
                 </div>
-                <div>{showUsers ? <QueueUsers users={users}/> : null}</div>
+                <div>{showUsers ? <QueueUsers users={users} /> : null}</div>
               </div>
             </div>
           </div>

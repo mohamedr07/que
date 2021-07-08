@@ -19,7 +19,7 @@
   align-items: center;
   max-width: 1200px;
   flex-wrap: wrap;
-  padding: 40px 0;
+  padding: 5px 0;
 }
 
 .card-container .card {
@@ -34,7 +34,8 @@
   background: #f7f0e4;
 }
 
-.card-container .card .box {
+.card-container .card .box,
+.card-container .wide-card .box {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -56,7 +57,8 @@
   z-index: 1;
 }
 
-.card-container .card .box .content {
+.card-container .card .box .content,
+.wide-card .box .content {
   padding: 20px;
   text-align: center;
 }
@@ -75,14 +77,16 @@
   color: rgba(0, 0, 0, 0.05);
 }
 
-.card-container .card .box .content .card-title {
+.card-container .card .box .content .card-title,
+.wide-card .box .content .card-title {
   font-size: 1.8em;
   color: #006f67;
   z-index: 1;
   transition: 0.5s;
 }
 
-.card-container .card .box .content .card-text {
+.card-container .card .box .content .card-text,
+.wide-card .box .content .card-text {
   font-size: 1em;
   font-weight: 300;
   color: #006f67;
@@ -142,4 +146,16 @@
 }
 .card-container .card:hover .box .v-menu-icon {
   color: #ffffff !important;
+}
+
+.wide-card {
+  position: relative;
+  min-width: 100%;
+  height: 140px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+    inset -5px -5px 5px rgba(255, 255, 255, 0.05),
+    5px 5px 5px rgba(0, 0, 0, 0.5), -5px -5px 5px rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  margin: 10px;
+  background: #f7f0e4;
 }

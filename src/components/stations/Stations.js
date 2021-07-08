@@ -78,7 +78,7 @@ export default function Stations() {
                         <li>
                           Provider:{' '}
                           <span className="font-bold">
-                            {station.provider.email}
+                            {station.provider ? station.provider.email : ''}
                           </span>
                         </li>
                         <li>

@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import axiosInstance from './Axios';
+import { w3cwebsocket as W3CWebSocket } from 'websocket';
 
 export default function Screen() {
-  const [stations, setStations] = useState(
-    useSelector((state) => state.stationsReducer)
+  const [stations, setStations] = useState([]);
+  const connections = stations.map(
+    (station) =>
+      new W3CWebSocket(
+        `wss://${window.location.host}/ws/queue/` + station.queue + '/'
+      )
   );
+
+  useEffect(() => {
+    get_stations_details();
+    connections.forEach((connection) => {
+      connection.onmessage = (message) => {
+        get_stations_details();
+      };
+    });
+  }, []);
+
+  const get_stations_details = () => {
+    axiosInstance
+      .get('stations/details')
+      .then((res) => setStations(res.data.stations));
+  };
 
   let msg = new SpeechSynthesisUtterance();
   msg.voice = speechSynthesis.getVoices()[3];
@@ -12,44 +32,37 @@ export default function Screen() {
 
   return (
     <div className="container">
-      <div class="row">
-        <div className="col-4">
-          <h6>
-            Active stations:{' '}
-            <span className="font-bold">{stations.length}</span>
-          </h6>
+      <div className="jumbotron jumbotron-fluid">
+        <div className="container">
+          <h1 className="display-4">Active Stations</h1>
         </div>
       </div>
-      <hr></hr>
+      <br />
+      <br />
       <div className="row">
-        {stations.map((station, index) => {
-          return (
-            <div className="col-lg-3 col-md-4 col-sm-6">
-              <div key={index} className="card">
-                <div className="card-body screen-card-body">
-                  <div className="card-text">
-                    <h6>Station ID: {station.id}</h6>
-                    <hr></hr>
-                    <ul className="list-unstyled">
-                      <li>
-                        Queue:{' '}
-                        <span className="font-bold">{station.queue}</span>
-                      </li>
-                      <li>
-                        Current serving:{' '}
-                        <span className="font-bold">
-                          {station.currentlyServing}
-                        </span>
-                      </li>
-                    </ul>
+        {stations
+          ? stations.map((station) => (
+              <div key={station.id} className="col-sm-12 ">
+                <div className="card-container">
+                  <div className="wide-card">
+                    <div className="box">
+                      <div className="content">
+                        <h3 className="card-title">{station.name}</h3>
+                        <div className="card-text">
+                          <hr></hr>
+                          <ul className="list-unstyled">
+                            <li>In queue:{station.in_queue}</li>
+                            <li>Currently serving:{station.serving}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            ))
+          : null}
       </div>
-      <button onClick={() => window.speechSynthesis.speak(msg)}>Speak</button>
     </div>
   );
 }
