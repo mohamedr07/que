@@ -14,6 +14,9 @@ export default function Screen() {
   useEffect(() => {
     get_stations_details();
     connections.forEach((connection) => {
+      connection.onopen = () => {
+        console.log('WebSocket Client Connected');
+      };
       connection.onmessage = (message) => {
         get_stations_details();
       };

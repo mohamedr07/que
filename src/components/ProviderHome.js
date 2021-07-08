@@ -24,6 +24,10 @@ function ProviderHome() {
       history.push('/login');
     }
 
+    client.onopen = () => {
+      console.log('WebSocket Client Connected');
+    };
+
     const load_user = async () => {
       let res = await axiosInstance.get(`users/${localStorage.getItem('id')}`);
       setUser(res.data.user);
@@ -62,6 +66,7 @@ function ProviderHome() {
           station: station.name,
         })
       );
+
       console.log(res.data);
       axiosInstance.put(`stations/${station.id}`, {
         'serving': res.data.queue,
