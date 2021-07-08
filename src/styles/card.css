@@ -31,9 +31,8 @@
     5px 5px 5px rgba(0, 0, 0, 0.5), -5px -5px 5px rgba(255, 255, 255, 0.5);
   border-radius: 15px;
   margin: 30px;
-  background: #EDF6E5;
+  background: #f7f0e4;
 }
-
 
 .card-container .card .box {
   position: absolute;
@@ -41,7 +40,7 @@
   left: 20px;
   right: 20px;
   bottom: 20px;
-  background: #EDF6E5;
+  background: #f7f0e4;
   /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
   border-radius: 15px;
   display: flex;
@@ -53,7 +52,7 @@
 .card-container .card:hover .box {
   transform: translateY(-50px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(45deg, #006F67, #013a70);
+  background: linear-gradient(45deg, #006f67, #013a70);
   z-index: 1;
 }
 
@@ -78,7 +77,7 @@
 
 .card-container .card .box .content .card-title {
   font-size: 1.8em;
-  color: #006F67;
+  color: #006f67;
   z-index: 1;
   transition: 0.5s;
 }
@@ -86,7 +85,7 @@
 .card-container .card .box .content .card-text {
   font-size: 1em;
   font-weight: 300;
-  color: #006F67;
+  color: #006f67;
   z-index: 1;
   transition: 0.5s;
 }
@@ -94,13 +93,13 @@
 .card-container .card .box .content a {
   font-size: 1em;
   font-weight: 300;
-  color: #006F67;
+  color: #006f67;
   z-index: 1;
   transition: 0.5s;
   text-decoration: none;
 }
 .card-container .card .box .content .btn-card {
-  border: #006F67 2px solid !important;
+  border: #006f67 2px solid !important;
 }
 
 .card-container .card:hover .box .content .btn-card {
@@ -134,13 +133,13 @@
 .v-menu-btn {
   position: absolute !important;
   top: 0px !important;
-  right: -10px !important; 
+  right: -10px !important;
 }
 
 .v-menu-icon {
-  color:#006F67 !important;
+  color: #006f67 !important;
   font-size: 1.2em !important;
 }
 .card-container .card:hover .box .v-menu-icon {
-  color:#ffffff !important;
+  color: #ffffff !important;
 }
