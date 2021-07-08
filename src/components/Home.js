@@ -52,6 +52,11 @@ export default function Home() {
       console.log(message);
       const dataFromServer = JSON.parse(message.data);
       setNumber(dataFromServer.message.queue);
+      console.log(dataFromServer.message.user, localStorage.getItem('id'));
+      console.log(
+        typeof dataFromServer.message.user,
+        typeof localStorage.getItem('id')
+      );
       if (dataFromServer.message.user == localStorage.getItem('id')) {
         alert('your turn');
         window.location.reload();
