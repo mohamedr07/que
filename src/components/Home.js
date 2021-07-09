@@ -128,7 +128,7 @@ export default function Home() {
                       </div>
                       <div className="align-left-h">
                         <label id="l7" className="p-1 txt-dec-bold">
-                          Current queue: {queueId}
+                          Current queue:{queueId}
                         </label>
                       
                         
