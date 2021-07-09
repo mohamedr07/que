@@ -7,16 +7,15 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 export default function Home() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(useSelector((state) => state.userReducer));
   const [queueId, setQueueId] = useState(1);
   const [info, setInfo] = useState({ position: 0, estimated_time: 0 });
   const [number, setNumber] = useState(0);
+
   const client = new W3CWebSocket(
     `wss://${window.location.host}/ws/queue/` + queueId + '/'
   );
   let history = useHistory();
-
-  // const [totalEstimatedTime, setTotalEstimatedTime] = useState(0)
 
   useEffect(() => {
     if (localStorage.getItem('id') == null) {
@@ -44,24 +43,30 @@ export default function Home() {
 
     load_user();
     get_queue_id();
-    get_info();
+    // get_info();
 
     client.onopen = () => {
-      console.log('WebSocket Client Connected');
+      client.send(
+        JSON.stringify({
+          type: 'message',
+          number: {
+            'user': 999999,
+            'queue': 9999999,
+          },
+        })
+      );
     };
     client.onmessage = (message) => {
       console.log(message);
       const dataFromServer = JSON.parse(message.data);
       setNumber(dataFromServer.message.queue);
-      console.log(dataFromServer.message.user, localStorage.getItem('id'));
-      console.log(
-        typeof dataFromServer.message.user,
-        typeof localStorage.getItem('id')
-      );
       if (
         dataFromServer.message.user.toString() == localStorage.getItem('id')
       ) {
-        alert('your turn');
+        window.focus();
+        alert(
+          `It's your turn please head to station ${dataFromServer.message.station}`
+        );
         window.location.reload();
       }
     };
@@ -91,7 +96,7 @@ export default function Home() {
                           Name:
                         </label>
                         <label id="l2" className="p-1 txt-dec">
-                          {user.full_name}
+                          {user ? user.full_name : ''}
                         </label>
                       </div>
                       <div className="align-left-h">
@@ -99,7 +104,7 @@ export default function Home() {
                           ID:
                         </label>
                         <label id="l4" className="p-1 txt-dec">
-                          {user.id}
+                          {user ? user.id : ''}
                         </label>{' '}
                       </div>
                       <div className="align-left-h">
@@ -149,7 +154,7 @@ export default function Home() {
                 </form>
                 <div className="col-lg-6 col-md-12 ">
                   <label className="btn btn-circle mt-4 ">
-                    {number}
+                    {number >= 999999 ? 0 : number}
 
                     {/* {user.queues.map(q => {
                                                 if(q.current == true){

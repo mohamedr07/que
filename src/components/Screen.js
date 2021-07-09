@@ -4,30 +4,35 @@ import { w3cwebsocket as W3CWebSocket } from 'websocket';
 
 export default function Screen() {
   const [stations, setStations] = useState([]);
-  const connections = stations.map(
-    (station) =>
-      new W3CWebSocket(
-        `wss://${window.location.host}/ws/queue/` + station.queue + '/'
-      )
-  );
+  const [connections, setConnections] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    get_stations_details();
-    connections.forEach((connection) => {
-      connection.onopen = () => {
-        console.log('WebSocket Client Connected');
-      };
-      connection.onmessage = (message) => {
-        get_stations_details();
-      };
+    axiosInstance.get('stations/details').then((res) => {
+      setStations(res.data.stations);
+      if (!loaded) {
+        setConnections(
+          stations.map(
+            (station) =>
+              new W3CWebSocket(
+                `wss://${window.location.host}/ws/queue/` + station.queue + '/'
+              )
+          )
+        );
+        connections.forEach((connection) => {
+          setLoaded(true);
+          connection.onopen = () => {
+            console.log('WebSocket Client Connected');
+          };
+          connection.onmessage = (message) => {
+            axiosInstance
+              .get('stations/details')
+              .then((res) => setStations(res.data.stations));
+          };
+        });
+      }
     });
   }, [stations]);
-
-  const get_stations_details = () => {
-    axiosInstance
-      .get('stations/details')
-      .then((res) => setStations(res.data.stations));
-  };
 
   let msg = new SpeechSynthesisUtterance();
   msg.voice = speechSynthesis.getVoices()[3];

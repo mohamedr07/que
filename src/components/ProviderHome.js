@@ -28,6 +28,11 @@ function ProviderHome() {
       console.log('WebSocket Client Connected');
     };
 
+    client.onmessage = (message) => {
+      console.log('MESSAGE');
+      get_queue_users();
+    };
+
     const load_user = async () => {
       let res = await axiosInstance.get(`users/${localStorage.getItem('id')}`);
       setUser(res.data.user);
@@ -62,8 +67,11 @@ function ProviderHome() {
       client.send(
         JSON.stringify({
           type: 'message',
-          number: res.data,
-          station: station.name,
+          number: {
+            'user': res.data.user,
+            'queue': res.data.queue,
+            'station': station.id,
+          },
         })
       );
 
@@ -87,14 +95,6 @@ function ProviderHome() {
                 <form className="form-signin col-lg-6 col-md-12">
                   <div className="card">
                     <div className="card-body">
-                      <div className="align-left-h">
-                        <label id="l1" className="p-1 txt-dec-bold">
-                          Name:
-                        </label>
-                        <label id="l2" className="p-1 txt-dec">
-                          {user.full_name}
-                        </label>
-                      </div>
                       <div className="align-left-h">
                         <label id="l1" className="p-1 txt-dec-bold">
                           Station ID:
