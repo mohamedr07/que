@@ -21,11 +21,11 @@ const Navbar = ({ user }) => {
               {/* collapse */}
               <div className="navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ">
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link to="/home" className="nav-link navbar-text">
                       Home
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <Link to="/admin" className="nav-link navbar-text">
                       Admin

@@ -25,6 +25,7 @@ export default function Home() {
     const load_user = async () => {
       let res = await axiosInstance.get(`users/${localStorage.getItem('id')}`);
       setUser(res.data.user);
+      console.log(res.data.user);
     };
 
     const get_queue_id = async () => {

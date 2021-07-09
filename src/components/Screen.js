@@ -48,9 +48,10 @@ export default function Screen() {
       <br />
       <br />
       <div className="row">
+
         {stations
           ? stations.map((station) => (
-              <div key={station.id} className="col-sm-12 ">
+              <div key={station.id} className="col-lg-3 col-md-4 col-sm-12">
                 <div className="card-container">
                   <div className="wide-card">
                     <div className="box">
@@ -70,6 +71,7 @@ export default function Screen() {
               </div>
             ))
           : null}
+
       </div>
     </div>
   );
