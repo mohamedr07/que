@@ -128,8 +128,10 @@ export default function Home() {
                       </div>
                       <div className="align-left-h">
                         <label id="l7" className="p-1 txt-dec-bold">
-                          Current queue:{queueId}
+                          Current queue: {queueId}
                         </label>
+                      
+                        
                         {/* {
                                                         user.queues.map(q => {
                                                             if(q.current == true){
@@ -137,6 +139,11 @@ export default function Home() {
                                                             }
                                                         })
                                                     } */}
+                      </div>
+                      <div className="align-left-h">
+                        <label id="l8" className="p-1 txt-dec-bold">
+                          Your Number: {user.turn}
+                        </label>
                       </div>
                       {/* <div className="align-left-h">
                                                     <label id="l9" className="p-1 txt-dec-bold">Total estimated time:</label>
@@ -181,7 +188,7 @@ export default function Home() {
                                       className="list-inline-item event-list"
                                     >
                                       <div>
-                                        {q.completed ? (
+                                        {q.que_completed ? (
                                           <div className="event-date btn-primary">
                                             <i className="bi bi-check"></i>
                                           </div>
@@ -192,7 +199,7 @@ export default function Home() {
                                         )}
                                         <div
                                           className={
-                                            q.completed
+                                            q.que_completed
                                               ? 'card mb-0 que-completed'
                                               : 'card mb-0'
                                           }
@@ -200,7 +207,7 @@ export default function Home() {
                                           <div className="card-body card-user-2">
                                             {/* <h2 className="card-number mt-2">{index + 1}</h2> */}
                                             <h5 className="card-title ">
-                                              <span>{q}</span>
+                                              <span>{q.que_id}</span>
                                             </h5>
                                           </div>
                                         </div>
