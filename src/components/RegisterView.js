@@ -12,8 +12,15 @@ export default function RegisterView() {
         password: '',
         password2: ''
     })
+    const initialFormErrors = Object.freeze({
+        email: '',
+        full_name: '',
+        password: '',
+        password2: ''
+    });
 
     const [formData, updateFormData] = useState(initialFormData)
+    const [formErrors, updateFormErrors] = useState(initialFormErrors)
 
     const handleChange = (e) => {
         updateFormData({
@@ -37,6 +44,14 @@ export default function RegisterView() {
             console.log(res)
             console.log(res.data)
         })
+        .catch((error) => {
+            updateFormErrors({
+                email: error.response.data.email,
+                full_name: error.response.data.full_name,
+                password: error.response.data.password,
+                password2: error.response.data.password
+            });
+        });
     }
 
     return (
@@ -51,18 +66,22 @@ export default function RegisterView() {
                                     <div className="form-label-group ">
                                         <input type="text" id="TextField" name="full_name" onChange={handleChange} className="form-control btn-shape" placeholder="TextField" required autoFocus/>
                                         <label htmlFor="TextField">Name</label>
+                                        <span className="text-danger">{formErrors.full_name}</span>
                                     </div>
                                     <div className="form-label-group">
                                         <input type="email" id="inputEmail" name="email" onChange={handleChange} className="form-control btn-shape" placeholder="Email address" required/>
                                         <label htmlFor="inputEmail">Email address</label>
+                                        <span className="text-danger">{formErrors.email}</span>
                                     </div>
                                     <div className="form-label-group">
                                         <input type="password" id="inputPassword" name="password" onChange={handleChange} className="form-control btn-shape" placeholder="Password" required/>
                                         <label htmlFor="inputPassword">Password</label>
+                                        <span className="text-danger">{formErrors.password}</span>
                                     </div>
                                     <div className="form-label-group">
                                         <input type="password" id="inputconfirmPassword" name="password2" onChange={handleChange} className="form-control btn-shape" placeholder="Password" required/>
                                         <label htmlFor="inputconfirmPassword">Confirm Password</label>
+                                        <span className="text-danger">{formErrors.password2}</span>
                                     </div>
                                     <button 
                                     className="btn btn-lg btn-primary btn-block text-uppercase mt-2 btn-shape" 

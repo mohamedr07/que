@@ -12,8 +12,13 @@ export default function LoginView({ setUser }) {
     email: '',
     password: '',
   });
+  const initialFormErrors = Object.freeze({
+    email: '',
+    password: ''
+  });
 
   const [formData, updateFormData] = useState(initialFormData);
+  const [formErrors, updateFormErrors] = useState(initialFormErrors);
 
   const handleChange = (e) => {
     updateFormData({
@@ -42,6 +47,12 @@ export default function LoginView({ setUser }) {
             history.push('/providerHome');
           else history.push('/home');
         });
+      })
+      .catch(error => {
+        updateFormErrors({
+          email: error.response.data.email,
+          password: error.response.data.password
+        })
       });
   };
 
@@ -67,6 +78,7 @@ export default function LoginView({ setUser }) {
                     />
                     <label htmlFor="inputEmail">Email address</label>
                   </div>
+                  <span className="text-danger">{formErrors.email}</span>
 
                   <div className="form-label-group">
                     <input
@@ -79,6 +91,7 @@ export default function LoginView({ setUser }) {
                       required
                     />
                     <label htmlFor="inputPassword">Password</label>
+                    <span className="text-danger">{formErrors.password}</span>
                   </div>
 
                   <br />
