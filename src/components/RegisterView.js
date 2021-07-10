@@ -31,7 +31,6 @@ export default function RegisterView() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
 
         axiosInstance.post(`users/register/`, {
             email: formData.email,
@@ -40,9 +39,10 @@ export default function RegisterView() {
             password2: formData.password2,
         })
         .then((res) => {
-            history.push('/login')
-            console.log(res)
-            console.log(res.data)
+            history.push({
+                pathname: '/login',
+                state: { message: res.data }
+            });
         })
         .catch((error) => {
             updateFormErrors({

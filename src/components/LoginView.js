@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import axiosInstance from './Axios';
 import store from '../index';
 import { addUser } from '../actions/index';
@@ -8,10 +8,13 @@ import '../styles/login.css';
 
 export default function LoginView({ setUser }) {
   const history = useHistory();
+  const location = useLocation();
+
   const initialFormData = Object.freeze({
     email: '',
     password: '',
   });
+
   const initialFormErrors = Object.freeze({
     email: '',
     password: ''
@@ -56,6 +59,14 @@ export default function LoginView({ setUser }) {
       });
   };
 
+  const InfoMessage = () => {
+    if (location.state?.message) {
+      return <span className="alert alert-success pb-">{location.state.message}</span>
+    }
+
+    return null;
+  }
+
   return (
     <div className="login">
       <div className="container">
@@ -64,7 +75,10 @@ export default function LoginView({ setUser }) {
             <div className="card card-signin my-5">
               <div className="card-body">
                 <h5 className="card-title text-center">Sign In</h5>
-                <form className="form-signin">
+                
+                <InfoMessage></InfoMessage>
+
+                <form className="form-signin mt-4">
                   <div className="form-label-group">
                     <input
                       type="email"
