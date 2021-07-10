@@ -159,8 +159,8 @@ export default function Home() {
                     </div>
                   </div>
                 </form>
-                <div className="d-flex flex-row ">
-                  <label className="btn btn-circle mt-4 justify-content-center">
+                <div className="d-flex flex-row justify-content-center ">
+                  <label className="btn btn-circle mt-4 ">
                     {number >= 999999 ? 0 : number}
 
                     {/* {user.queues.map(q => {
