@@ -123,8 +123,11 @@ function ProviderHome() {
                     </div>
                   </div>
                 </form>
-                <div className="col-lg-6 col-md-12">
-                  <button className="btn btn-circle" onClick={onClick}>
+                <div className="d-flex flex-row">
+                  <button
+                    className="btn btn-circle justify-content-center"
+                    onClick={onClick}
+                  >
                     {count}
                     <div className="est-time">Current in queue</div>
                   </button>

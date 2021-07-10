@@ -89,7 +89,7 @@ export default function Home() {
           <div className="card card-signin">
             <div className="card-body">
               <div className="row">
-                <form className="form-signin col-lg-6 col-md-12">
+                <form className="form-signin col-lg-12 col-md-12">
                   <div className="card ">
                     <div className="card-body">
                       <div className="align-left-h">
@@ -130,8 +130,7 @@ export default function Home() {
                         <label id="l7" className="p-1 txt-dec-bold">
                           Current queue:{queueId}
                         </label>
-                      
-                        
+
                         {/* {
                                                         user.queues.map(q => {
                                                             if(q.current == true){
@@ -160,8 +159,8 @@ export default function Home() {
                     </div>
                   </div>
                 </form>
-                <div className="col-lg-6 col-md-12 ">
-                  <label className="btn btn-circle mt-4 ">
+                <div className="d-flex flex-row ">
+                  <label className="btn btn-circle mt-4 justify-content-center">
                     {number >= 999999 ? 0 : number}
 
                     {/* {user.queues.map(q => {
