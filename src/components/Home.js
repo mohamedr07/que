@@ -70,7 +70,9 @@ export default function Home() {
     client.onmessage = (message) => {
       console.log(message);
       const dataFromServer = JSON.parse(message.data);
-      setNumber(dataFromServer.message.queue);
+
+      if (dataFromServer.message.queue < 9999999)
+        setNumber(dataFromServer.message.queue);
       if (
         dataFromServer.message.user.toString() == localStorage.getItem('id')
       ) {
@@ -171,7 +173,7 @@ export default function Home() {
                 </form>
                 <div className="d-flex flex-row justify-content-center ">
                   <label className="btn btn-circle mt-4 ">
-                    {number >= 999999 ? 0 : number}
+                    {number}
 
                     {/* {user.queues.map(q => {
                                                 if(q.current == true){
