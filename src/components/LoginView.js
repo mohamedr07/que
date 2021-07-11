@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import axiosInstance from './Axios';
 import store from '../index';
 import { addUser } from '../actions/index';
@@ -8,12 +8,20 @@ import '../styles/login.css';
 
 export default function LoginView({ setUser }) {
   const history = useHistory();
+  const location = useLocation();
+
   const initialFormData = Object.freeze({
     email: '',
     password: '',
   });
 
+  const initialFormErrors = Object.freeze({
+    email: '',
+    password: ''
+  });
+
   const [formData, updateFormData] = useState(initialFormData);
+  const [formErrors, updateFormErrors] = useState(initialFormErrors);
 
   const handleChange = (e) => {
     updateFormData({
@@ -42,8 +50,22 @@ export default function LoginView({ setUser }) {
             history.push('/providerHome');
           else history.push('/home');
         });
+      })
+      .catch(error => {
+        updateFormErrors({
+          email: error.response.data.email,
+          password: error.response.data.password
+        })
       });
   };
+
+  const InfoMessage = () => {
+    if (location.state?.message) {
+      return <span className="alert alert-success pb-">{location.state.message}</span>
+    }
+
+    return null;
+  }
 
   return (
     <div className="login">
@@ -53,7 +75,10 @@ export default function LoginView({ setUser }) {
             <div className="card card-signin my-5">
               <div className="card-body">
                 <h5 className="card-title text-center">Sign In</h5>
-                <form className="form-signin">
+                
+                <InfoMessage></InfoMessage>
+
+                <form className="form-signin mt-4">
                   <div className="form-label-group">
                     <input
                       type="email"
@@ -67,6 +92,7 @@ export default function LoginView({ setUser }) {
                     />
                     <label htmlFor="inputEmail">Email address</label>
                   </div>
+                  <span className="text-danger">{formErrors.email}</span>
 
                   <div className="form-label-group">
                     <input
@@ -79,6 +105,7 @@ export default function LoginView({ setUser }) {
                       required
                     />
                     <label htmlFor="inputPassword">Password</label>
+                    <span className="text-danger">{formErrors.password}</span>
                   </div>
 
                   <br />
@@ -95,7 +122,12 @@ export default function LoginView({ setUser }) {
                   >
                     Sign up
                   </Link>
+
                   <hr className="my-4" />
+
+                  <Link 
+                  to="/forgot-password"
+                  className="text-secondary">Forgot password?</Link>
                 </form>
               </div>
             </div>
