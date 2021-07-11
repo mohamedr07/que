@@ -122,7 +122,12 @@ export default function LoginView({ setUser }) {
                   >
                     Sign up
                   </Link>
+
                   <hr className="my-4" />
+
+                  <Link 
+                  to="/forgot-password"
+                  className="text-secondary">Forgot password?</Link>
                 </form>
               </div>
             </div>

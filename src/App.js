@@ -3,6 +3,7 @@ import AdminView from './components/AdminView';
 import LoginView from './components/LoginView';
 import Logout from './components/Logout';
 import RegisterView from './components/RegisterView';
+import ForgotPasswordView from './components/ForgotPasswordView';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import {
@@ -67,6 +68,9 @@ function App() {
               </Route>
               <Route path="/register">
                 <RegisterView />
+              </Route>
+              <Route path="/forgot-password">
+                <ForgotPasswordView />
               </Route>
               <Route path="/providers">
                 <Providers />
