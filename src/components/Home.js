@@ -11,7 +11,7 @@ export default function Home() {
   const [queueId, setQueueId] = useState(1);
   const [info, setInfo] = useState({ position: 0, estimated_time: 0 });
   const [number, setNumber] = useState(0);
-
+  const [myNumber, setMyNumber] = useState(0)
   const client = new W3CWebSocket(
     `wss://${window.location.host}/ws/queue/` + queueId + '/'
   );
@@ -25,7 +25,7 @@ export default function Home() {
     const load_user = async () => {
       let res = await axiosInstance.get(`users/${localStorage.getItem('id')}`);
       setUser(res.data.user);
-      console.log(res.data.user);
+      //console.log(res.data.user);
     };
 
     const get_queue_id = async () => {
@@ -33,6 +33,13 @@ export default function Home() {
         `/queues/${localStorage.getItem('id')}/queue`
       );
       setQueueId(res.data[0]);
+    };
+
+    const load_data = async () => {
+      let res = await axiosInstance.get(`/queues/${localStorage.getItem('id')}/first`);
+      console.log(res.data)
+      setNumber(res.data.first)
+      setMyNumber(res.data.myNum)
     };
 
     const get_info = async () => {
@@ -44,6 +51,7 @@ export default function Home() {
 
     load_user();
     get_queue_id();
+    load_data();
     // get_info();
 
     client.onopen = () => {
@@ -71,6 +79,7 @@ export default function Home() {
         window.location.reload();
       }
     };
+    
   }, [queueId]);
   // useEffect(() => {
   //     let ET = 0;
@@ -128,7 +137,7 @@ export default function Home() {
                       </div>
                       <div className="align-left-h">
                         <label id="l7" className="p-1 txt-dec-bold">
-                          Current queue:{queueId}
+                          Current queue: {queueId}
                         </label>
 
                         {/* {
@@ -141,7 +150,7 @@ export default function Home() {
                       </div>
                       <div className="align-left-h">
                         <label id="l8" className="p-1 txt-dec-bold">
-                          Your Number: {user.turn}
+                          Your Number: {myNumber}
                         </label>
                       </div>
                       {/* <div className="align-left-h">
