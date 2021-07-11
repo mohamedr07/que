@@ -8,10 +8,10 @@ import { useHistory } from 'react-router-dom';
 
 export default function Home() {
   const [user, setUser] = useState(useSelector((state) => state.userReducer));
-  const [queueId, setQueueId] = useState(1);
+  const [queueId, setQueueId] = useState(0);
   const [info, setInfo] = useState({ position: 0, estimated_time: 0 });
   const [number, setNumber] = useState(0);
-  const [myNumber, setMyNumber] = useState(0)
+  const [myNumber, setMyNumber] = useState(0);
   const client = new W3CWebSocket(
     `wss://${window.location.host}/ws/queue/` + queueId + '/'
   );
@@ -36,10 +36,12 @@ export default function Home() {
     };
 
     const load_data = async () => {
-      let res = await axiosInstance.get(`/queues/${localStorage.getItem('id')}/first`);
-      console.log(res.data)
-      setNumber(res.data.first)
-      setMyNumber(res.data.myNum)
+      let res = await axiosInstance.get(
+        `/queues/${localStorage.getItem('id')}/first`
+      );
+      console.log(res.data);
+      setNumber(res.data.first);
+      setMyNumber(res.data.myNum);
     };
 
     const get_info = async () => {
@@ -79,7 +81,6 @@ export default function Home() {
         window.location.reload();
       }
     };
-    
   }, [queueId]);
   // useEffect(() => {
   //     let ET = 0;
