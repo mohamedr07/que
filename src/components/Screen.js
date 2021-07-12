@@ -7,7 +7,8 @@ export default function Screen() {
   const [connections, setConnections] = useState([]);
   const [loaded, setLoaded] = useState(false);
   let msg = new SpeechSynthesisUtterance();
-  msg.voice = speechSynthesis.getVoices()[3];
+  msg.lang = 'en-US';
+  msg.voice = speechSynthesis.getVoices()[1];
 
   useEffect(() => {
     axiosInstance.get('stations/details').then((res) => {
@@ -31,10 +32,11 @@ export default function Screen() {
             axiosInstance
               .get('stations/details')
               .then((res) => setStations(res.data.stations));
-            if (dataFromServer.message.queue < 9999999)
+            if (dataFromServer.message.queue !== 9999999) {
               msg.text = `Client number ${dataFromServer.message.queue} please head to station ${dataFromServer.message.stationName}`;
 
-            window.speechSynthesis.speak(msg);
+              window.speechSynthesis.speak(msg);
+            }
           };
         });
       }
