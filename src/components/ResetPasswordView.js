@@ -13,7 +13,7 @@ export default function ResetPasswordView() {
         password: '',
     })
     const initialFormErrors = Object.freeze({
-        password: [],
+        passowrd: [],
         token: ''
     });
 
@@ -65,7 +65,7 @@ export default function ResetPasswordView() {
                                     <div className="form-label-group">
                                         <input type="password" id="inputPassword" name="password" onChange={handleChange} className="form-control btn-shape" placeholder="Password" required/>
                                         <label htmlFor="inputPassword">New Password</label>
-                                        {formErrors.password?.map((error, i) => {
+                                        {formErrors.passowrd?.map((error, i) => {
                                             return <span className="text-danger">{error}</span>
                                         })}
                                     </div>

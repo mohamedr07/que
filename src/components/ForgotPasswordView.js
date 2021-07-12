@@ -37,7 +37,7 @@ export default function ForgotPasswordView() {
         })
         .catch((error) => {
             updateFormErrors({
-                email: error.response.data.email,
+                email: error.response?.data?.email,
             });
         });
     }
