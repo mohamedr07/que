@@ -45,6 +45,10 @@ export default function RegisterView() {
             });
         })
         .catch((error) => {
+            if (error.response.data.detail) {
+                alert(error.response.data.detail);
+            }
+
             updateFormErrors({
                 email: error.response.data.email,
                 full_name: error.response.data.full_name,

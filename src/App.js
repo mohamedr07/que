@@ -4,6 +4,7 @@ import LoginView from './components/LoginView';
 import Logout from './components/Logout';
 import RegisterView from './components/RegisterView';
 import ForgotPasswordView from './components/ForgotPasswordView';
+import ResetPasswordView from './components/ResetPasswordView';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import {
@@ -71,6 +72,9 @@ function App() {
               </Route>
               <Route path="/forgot-password">
                 <ForgotPasswordView />
+              </Route>
+              <Route path="/reset-password">
+                <ResetPasswordView />
               </Route>
               <Route path="/providers">
                 <Providers />

@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import axiosInstance from './Axios'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import '../styles/login.css'
 
-export default function ForgotPasswordView() {
+
+export default function ResetPasswordView() {
+
+    const urlParams = new URLSearchParams(window.location.search)
 
     const history = useHistory()
     const initialFormData = Object.freeze({
-        email: '',
+        password: '',
     })
     const initialFormErrors = Object.freeze({
-        email: '',
+        password: [],
+        token: ''
     });
 
     const [formData, updateFormData] = useState(initialFormData)
@@ -26,18 +30,23 @@ export default function ForgotPasswordView() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        axiosInstance.post(`users/reset_password/`, {
-            email: formData.email,
+        console.log(urlParams.get('token'));
+
+
+        axiosInstance.post(`users/reset_password/confirm/`, {
+            password: formData.password,
+            token: urlParams.get('token')
         })
         .then((res) => {
             history.push({
                 pathname: '/login',
-                state: { message: 'We have e-mailed your password reset link!' }
+                state: { message: 'Password Changed successfully!' }
             })
         })
         .catch((error) => {
             updateFormErrors({
-                email: error.response.data.email,
+                password: error.response.data.password,
+                token: error.response.data.token
             });
         });
     }
@@ -49,13 +58,16 @@ export default function ForgotPasswordView() {
                     <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
                         <div className="card card-signin my-5">
                             <div className="card-body">
-                                <h5 className="card-title text-center">Forgot Password</h5>
+                                <h5 className="card-title text-center">Reset Password</h5>
 
                                 <form className="form-signin">
+
                                     <div className="form-label-group">
-                                        <input type="email" id="inputEmail" name="email" onChange={handleChange} className="form-control btn-shape" placeholder="Email address" required/>
-                                        <label htmlFor="inputEmail">Email address</label>
-                                        <span className="text-danger">{formErrors.email}</span>
+                                        <input type="password" id="inputPassword" name="password" onChange={handleChange} className="form-control btn-shape" placeholder="Password" required/>
+                                        <label htmlFor="inputPassword">New Password</label>
+                                        {formErrors.password?.map((error, i) => {
+                                            return <span className="text-danger">{error}</span>
+                                        })}
                                     </div>
                                     
                                     <button 
