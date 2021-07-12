@@ -78,7 +78,7 @@ export default function Home() {
       ) {
         window.focus();
         alert(
-          `It's your turn please head to station ${dataFromServer.message.station}`
+          `It's your turn please head to station ${dataFromServer.message.stationName}`
         );
         window.location.reload();
       }

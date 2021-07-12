@@ -6,6 +6,8 @@ export default function Screen() {
   const [stations, setStations] = useState([]);
   const [connections, setConnections] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  let msg = new SpeechSynthesisUtterance();
+  msg.voice = speechSynthesis.getVoices()[3];
 
   useEffect(() => {
     axiosInstance.get('stations/details').then((res) => {
@@ -25,18 +27,19 @@ export default function Screen() {
             console.log('WebSocket Client Connected');
           };
           connection.onmessage = (message) => {
+            const dataFromServer = JSON.parse(message.data);
             axiosInstance
               .get('stations/details')
               .then((res) => setStations(res.data.stations));
+            if (dataFromServer.message.queue < 9999999)
+              msg.text = `Client number ${dataFromServer.message.queue} please head to station ${dataFromServer.message.stationName}`;
+
+            window.speechSynthesis.speak(msg);
           };
         });
       }
     });
   }, [stations]);
-
-  let msg = new SpeechSynthesisUtterance();
-  msg.voice = speechSynthesis.getVoices()[3];
-  msg.text = 'Client x please head to station y';
 
   return (
     <div className="container">
@@ -48,7 +51,6 @@ export default function Screen() {
       <br />
       <br />
       <div className="row">
-
         {stations
           ? stations.map((station) => (
               <div key={station.id} className="col-lg-3 col-md-4 col-sm-12">
@@ -71,7 +73,6 @@ export default function Screen() {
               </div>
             ))
           : null}
-
       </div>
     </div>
   );

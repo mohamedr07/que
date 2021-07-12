@@ -71,6 +71,7 @@ function ProviderHome() {
             'user': res.data.user,
             'queue': res.data.queue,
             'station': station.id,
+            'stationName': station.name,
           },
         })
       );
