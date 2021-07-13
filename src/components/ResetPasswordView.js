@@ -13,7 +13,7 @@ export default function ResetPasswordView() {
         password: '',
     })
     const initialFormErrors = Object.freeze({
-        passowrd: [],
+        password: [],
         token: ''
     });
 
@@ -29,9 +29,6 @@ export default function ResetPasswordView() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        console.log(urlParams.get('token'));
-
 
         axiosInstance.post(`users/reset_password/confirm/`, {
             password: formData.password,
@@ -51,6 +48,18 @@ export default function ResetPasswordView() {
         });
     }
 
+    function ShowErrors() {
+        if (formErrors.password) {
+
+            console.log(formErrors.password)
+            return formErrors.password.map((error, i) => 
+                <span className="text-danger">{error}</span> 
+            )
+        }
+
+        return null
+    }
+
     return (
         <div className="login">
             <div className="container">
@@ -65,9 +74,7 @@ export default function ResetPasswordView() {
                                     <div className="form-label-group">
                                         <input type="password" id="inputPassword" name="password" onChange={handleChange} className="form-control btn-shape" placeholder="Password" required/>
                                         <label htmlFor="inputPassword">New Password</label>
-                                        {formErrors.passowrd?.map((error, i) => {
-                                            return <span className="text-danger">{error}</span>
-                                        })}
+                                        <ShowErrors></ShowErrors>
                                     </div>
                                     
                                     <button 
