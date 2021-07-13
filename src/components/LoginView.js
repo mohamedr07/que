@@ -52,6 +52,10 @@ export default function LoginView({ setUser }) {
         });
       })
       .catch(error => {
+        if (error.response.data.detail) {
+          alert(error.response.data.detail);
+        }
+
         updateFormErrors({
           email: error.response.data.email,
           password: error.response.data.password
