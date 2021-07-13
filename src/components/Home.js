@@ -184,7 +184,7 @@ export default function Home() {
                 </form>
                 <div className="d-flex flex-row justify-content-center ">
                   <label className="btn btn-circle mt-4 ">
-                    {number > 1 ? number - 1 : 0}
+                    {number}
 
                     {/* {user.queues.map(q => {
                                                 if(q.current == true){
