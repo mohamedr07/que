@@ -25,7 +25,7 @@ export default function Home() {
     const load_user = async () => {
       let res = await axiosInstance.get(`users/${localStorage.getItem('id')}`);
       setUser(res.data.user);
-      //console.log(res.data.user);
+      console.log(res.data.user);
     };
 
     const get_queue_id = async () => {
@@ -140,9 +140,11 @@ export default function Home() {
                       </div>
                       <div className="align-left-h">
                         <label id="l7" className="p-1 txt-dec-bold">
-                          Current queue: {queueId}
+                          Current queue: 
                         </label>
-
+                        <label id="l4" className="p-1 txt-dec">
+                          {user.queues ? user.queues[0].name : null }
+                        </label>{''}
                         {/* {
                                                         user.queues.map(q => {
                                                             if(q.current == true){
@@ -153,8 +155,11 @@ export default function Home() {
                       </div>
                       <div className="align-left-h">
                         <label id="l8" className="p-1 txt-dec-bold">
-                          Your Number: {myNumber}
+                          Your Number: 
                         </label>
+                        <label id="l4" className="p-1 txt-dec">
+                          {myNumber}
+                        </label>{''}
                       </div>
                       {/* <div className="align-left-h">
                                                     <label id="l9" className="p-1 txt-dec-bold">Total estimated time:</label>
@@ -173,7 +178,7 @@ export default function Home() {
                 </form>
                 <div className="d-flex flex-row justify-content-center ">
                   <label className="btn btn-circle mt-4 ">
-                    {number}
+                    {number - 1}
 
                     {/* {user.queues.map(q => {
                                                 if(q.current == true){
@@ -218,7 +223,7 @@ export default function Home() {
                                           <div className="card-body card-user-2">
                                             {/* <h2 className="card-number mt-2">{index + 1}</h2> */}
                                             <h5 className="card-title ">
-                                              <span>{q.que_id}</span>
+                                              <span>{q.name}</span>
                                             </h5>
                                           </div>
                                         </div>
