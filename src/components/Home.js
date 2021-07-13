@@ -140,11 +140,16 @@ export default function Home() {
                       </div>
                       <div className="align-left-h">
                         <label id="l7" className="p-1 txt-dec-bold">
-                          Current queue: 
+                          Current queue:
                         </label>
                         <label id="l4" className="p-1 txt-dec">
-                          {user.queues ? user.queues[0].name : null }
-                        </label>{''}
+                          {user.queues
+                            ? user.queues[0]
+                              ? user.queues[0].name
+                              : null
+                            : null}
+                        </label>
+                        {''}
                         {/* {
                                                         user.queues.map(q => {
                                                             if(q.current == true){
@@ -155,11 +160,12 @@ export default function Home() {
                       </div>
                       <div className="align-left-h">
                         <label id="l8" className="p-1 txt-dec-bold">
-                          Your Number: 
+                          Your Number:
                         </label>
                         <label id="l4" className="p-1 txt-dec">
                           {myNumber}
-                        </label>{''}
+                        </label>
+                        {''}
                       </div>
                       {/* <div className="align-left-h">
                                                     <label id="l9" className="p-1 txt-dec-bold">Total estimated time:</label>
